@@ -8,7 +8,16 @@
 </head>
 <body style="background-color:white;margin:0;
 	font-family:Martel;
-	word-spacing: -0.25em ; background-color: #FFFFFF ;text-align: justify;">
+	 background-color: #FFFFFF ;text-align: justify;">
+<div style="font-size:medium;background-color:black;color:white;">
+<input type="radio" id="M" name="fs" value="M" checked onchange="M()">
+<label for="M">M</label>
+<input type="radio" id="L" name="fs" value="L" onchange="L()">
+<label for="L">L</label>
+<input type="radio" id="XL" name="fs" value="XL" onchange="XL()">
+<label for="XL">XL</label>
+</div>
+<div id="o" style="word-spacing: -0.25em ;">
 <div style="margin:0.5em;background-color:white;">
 <!--<div style="margin:0;text-align:center;">
  <img src="jurassic-park-2.svg" style="padding:1.5em;height:6em;"></img><br>
@@ -21,7 +30,20 @@
 <p style="text-indent:1em;">
 अ थै वं य था व का शं सु खा नु भ वे न न र्म दा द र्श ने न च व र्ते त त तो व र्षा व सा ने कृ श त रा यां सं वृ त्ता या न्न र्म दा या म ना वृ ताः क र्काः का कै र्भु ज्य न्ते ते षा म व शि ष्ट पा दा दी ना म व य वा ना न्द र्श ने न नि र्वे दा द म र क ण्ट कं व्र जे त् ।<p style="text-indent:1em;">त त्र न र्म दो द्ग म स्य स न्नि धा ने सि त श्शि ला म यो ह स्ति पो त स्ति ष्ठ ति त त्रै व मा च क्ष ते य द्ध्र स्व स ञ्चा रा द्ध स्ति पा द म ध्या त्के व ल न्नि ष्पा पा ज नाः पा रं स र्तुं श क्नु व न्त्य थ तं ह स्ति न मा सा द्य बा न्ध वा न्प्रे र ये द्दे श स्य प्र धा न म न्त्र्य प्य स्मा न्नि र्ग तो स्मा भि र्दू र द र्श ने दृ ष्ट इ त्या दि भि स्स त्या नृ तै रा श्वा स नै र्वि श्र म्भ ये त्स्व य म पि ते न द्वा रे ण स रे त्स र णे हि स कृ त्क ष्ट म स र णे तु प श्चा त्पा पी वा नि ष्पा पो वा नि र्वि शे षे णो प हा स्य ता मु प ग म्या स कृ त्क ष्ट म वा प्नो त्य थ नि स्स र ण का ले स ङ्क ट म्प्रा प्य प श्य तो ज ना न्न चि न्त ये च्चि न्त य तो हि सं र म्भा त्का य आ प्या य ते त तो नि स्सृ त्य स्व स्थे न म न सो द्ग मो द क मु प स्पृ श्य गृ हा न्व्र जे त् ।
 </div>
+</div>
 <script>
+function M()
+{
+	document.getElementById("o").style.fontSize="medium";
+}
+function L()
+{
+	document.getElementById("o").style.fontSize="large";
+}
+function XL()
+{
+	document.getElementById("o").style.fontSize="x-large";
+}
 var Img1=document.getElementById("hp");
 function img1()
 {
