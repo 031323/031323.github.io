@@ -1,5 +1,5 @@
 var al,h,m,observer;
-var d=0.05;
+var d=0.02;
 // Select the node that will be observed for mutations
 var targetNode = document.getElementById('al');
 
@@ -27,6 +27,7 @@ var callback = function(mutationsList, observer) {
 		m-=d;
 		al.style.marginLeft=m.toString()+"em";
 		al.style.marginRight=m.toString()+"em";
+		al.style.color="black"
 		observer.disconnect();
 	}
 };
