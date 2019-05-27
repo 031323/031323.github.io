@@ -1,4 +1,4 @@
-var al,h,m,observer;
+var al,bl,h,m,observer,cursor;
 var d=0.02;
 // Select the node that will be observed for mutations
 var targetNode = document.getElementById('al');
@@ -41,11 +41,29 @@ function flow()
 {
 	console.log("laoded");
 	al=document.getElementById("al");
+	bl=document.getElementById("bl");
 	h=al.offsetHeight;
 	m=parseFloat(al.style.marginRight);
-	observer = new MutationObserver(callback);
+	
+	
+	cursor=document.getElementById("cursor");	
+	var nl=bl.offsetHeight/cursor.offsetHeight;
+	bl.style.marginLeft=Math.floor((bl.offsetWidth+bl.offsetLeft-cursor.offsetLeft)/(bl.offsetHeight/cursor.offsetHeight)+1).toString()+"px";
+	while(bl.offsetHeight/cursor.offsetHeight>nl)
+	{
+		console.log("t");
+		bl.style.marginLeft=(parseInt(bl.style.marginLeft)-1).toString()+"px";
+	}
+	var ml=parseInt(bl.style.marginLeft);
+	var m2l=Math.floor(ml/2);
+	bl.style.marginLeft=(m2l).toString()+"px";
+	bl.style.marginRight=(ml-m2l).toString()+"px";
+	//cursor.style.color="white";
+	al.style.color="black";
+	
+	/*observer = new MutationObserver(callback);
 	observer.observe(targetNode, config);
 	m+=d;
 	al.style.marginLeft=m.toString()+"em";
-	al.style.marginRight=m.toString()+"em";
+	al.style.marginRight=m.toString()+"em";*/
 }
