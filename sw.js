@@ -3,7 +3,7 @@ self.addEventListener('install', function(event) {
     caches.open('v1').then(function(cache) {
       return cache.addAll([
         '/',
-        '/नर्मदादर्शनकथा.html',
+        '/नर्मदादर्शनकथा',
         '2.js',
         'index.html',
         '1.jpg',
