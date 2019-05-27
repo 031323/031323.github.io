@@ -27,7 +27,7 @@ var callback = function(mutationsList, observer) {
 		m-=d;
 		al.style.marginLeft=m.toString()+"em";
 		al.style.marginRight=m.toString()+"em";
-		al.style.color="black"
+		al.style.color="black";
 		observer.disconnect();
 	}
 };
