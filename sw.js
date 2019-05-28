@@ -8,8 +8,7 @@ self.addEventListener('install', function(event) {
         'index.html',
         '1.jpg',
         'ChanakyaBBTUni.ttf',
-        'ChanakyaBBTUni-Bold.ttf',
-        'https://fonts.googleapis.com/css?family=Noto+Sans'
+        'ChanakyaBBTUni-Bold.ttf'
       ]);
     })
   );
