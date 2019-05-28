@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v3').then(function(cache) {
+    caches.open('v4').then(function(cache) {
       return cache.addAll([
         '/',
         '/नर्मदादर्शनकथा',
@@ -15,7 +15,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheKeeplist = ['v3'];
+  var cacheKeeplist = ['v4'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
@@ -36,7 +36,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 
-function update(request) {
+/*function update(request) {
   return caches.open(CACHE).then(function (cache) {
     return fetch(request).then(function (response) {
       return cache.put(request, response.clone()).then(function () {
@@ -44,4 +44,4 @@ function update(request) {
       });
     });
   });
-}
+}*/
