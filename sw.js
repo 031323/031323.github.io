@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v4').then(function(cache) {
+    caches.open('280520190956').then(function(cache) {
       return cache.addAll([
         '/',
         '/नर्मदादर्शनकथा',
@@ -8,14 +8,15 @@ self.addEventListener('install', function(event) {
         'index.html',
         '1.jpg',
         'ChanakyaBBTUni.ttf',
-        'ChanakyaBBTUni-Bold.ttf'
+        'ChanakyaBBTUni-Bold.ttf',
+        'https://fonts.googleapis.com/css?family=Noto+Sans'
       ]);
     })
   );
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheKeeplist = ['v4'];
+  var cacheKeeplist = ['280520190956'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
@@ -32,16 +33,4 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
   );
-  //event.waitUntil( update(event.request));
 });
-
-
-/*function update(request) {
-  return caches.open(CACHE).then(function (cache) {
-    return fetch(request).then(function (response) {
-      return cache.put(request, response.clone()).then(function () {
-        return response;
-      });
-    });
-  });
-}*/
