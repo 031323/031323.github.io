@@ -4,6 +4,7 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         '/',
         '/नर्मदादर्शनकथा',
+        "5.html",
         '2.js',
         '1.jpg',
         'ChanakyaBBTUni.ttf',
