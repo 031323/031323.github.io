@@ -5,7 +5,6 @@ self.addEventListener('install', function(event) {
         '/',
         '/नर्मदादर्शनकथा',
         '2.js',
-        'index.html',
         '1.jpg',
         'ChanakyaBBTUni.ttf',
         'ChanakyaBBTUni-Bold.ttf'
