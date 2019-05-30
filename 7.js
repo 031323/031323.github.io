@@ -105,7 +105,7 @@ function S4(glt,s)
 		//glt.appendChild(newSpan);
 		for(j=L1[i];j<L2[i];j++)
 		{	
-			ks+="<span style=\"position:relative;display:inline-block;width:"+sw[j].toString()+";left:"+Math.floor((wow-Lw[i])*(j-L1[i])/(L2[i]-L1[i]))+";\">"+ss[j]+"</span>";
+			ks+="<span style=\"position:relative;display:inline-block;width:"+sw[j].toString()+";left:"+Math.floor((wow-Lw[i])*(j-L1[i])/(L2[i]-L1[i]))+";\">"+" "+ss[j]+"</span>";
 			w+=sw[j];
 		}
 		//newSpan.innerHTML=ks;
