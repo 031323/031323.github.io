@@ -17,7 +17,7 @@
   
 </style>
 </head>
-<body onload="f1()" style="margin:0 0 0 0;">
+<body onload="f1()" onresize="f1()" style="margin:0 0 0 0;">
 <div style="font-size:medium;background-color:black;color:white;text-align:center;">
 <a href="https://142434.github.io" style="font-family:sans-serif;text-decoration:none;color:white;">142434</a></div>
 <div style="margin:0.5em 0.5em 0.5em 0.5em;">
@@ -30,8 +30,13 @@
 <script>
 function f1()
 {
-	S4(document.getElementById("d2"),s);
-	S4(document.getElementById("d1"),"न र्म दा द र्श न क था।");
+	console.log("f1");
+	d2=document.getElementById("d2");
+	d1=document.getElementById("d1");
+	d2.innerHTML="";
+	d1.innerHTML="";
+	S4(d2,s);
+	S4(d1,"न र्म दा द र्श न क था");
 }
 var Img1=document.getElementById("hp");
 function img1()

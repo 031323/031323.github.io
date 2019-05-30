@@ -114,6 +114,6 @@ function S4(glt,s)
 		//glt.innerHTML+=ks+"<br>";
 		
 	}
-		glt.style.width=glt.offsetWidth;
+		//glt.style.width=glt.offsetWidth;
 	})
 }
