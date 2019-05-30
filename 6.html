@@ -28,9 +28,12 @@
 <script src="3.js"></script>
 <script src="7.js"></script>
 <script>
+var i=0;
 function f1()
 {
 	console.log("f1");
+	document.title=i;
+	i++;
 	d2=document.getElementById("d2");
 	d1=document.getElementById("d1");
 	d2.innerHTML="";
