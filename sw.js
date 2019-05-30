@@ -7,7 +7,7 @@ self.addEventListener('install', function(event) {
         '/6',
         "app.js",
         "3.js",
-        "7.js"
+        "7.js",
         '1.jpg',
         'ChanakyaBBTUni.ttf',
         'ChanakyaBBTUni-Bold.ttf'
