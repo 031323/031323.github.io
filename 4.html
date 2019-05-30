@@ -18,7 +18,7 @@
 </style>
 </head>
 <body onload="f1()">
-<div id="glt" style="word-spacing:-0.25em;font-family:Chanakya;"><span id="khchk">14243<strong>4</strong></span></div>
+<div id="glt" style="margin-left:0;margin-right:0;font-size:x-large;word-spacing:-0.25em;font-family:Chanakya;"><span id="khchk">14243<strong>4</strong></span></div>
 <script src="3.js"></script>
 <script>
 var khchk=document.getElementById("khchk");
@@ -26,6 +26,7 @@ var glt=document.getElementById("glt");
 var ss,sw,l1,l2,lw;
 var L1,L2,Lw;
 var dvv;
+var con,cow,LW;
 function f1(){
 document.fonts.ready.then(function()
 {
@@ -39,8 +40,9 @@ document.fonts.ready.then(function()
 		sw.push(khchk.offsetWidth);
 	}
 	
-	khchk.innerText=s;
-	dvv=glt.offsetWidth*0.95;
+	for(i=1;i<=150;i++)
+		khchk.innerHTML+=i.toString()+"<br>";
+	dvv=glt.offsetWidth-1;
 	khchk.innerText="";
 	
 	l1=new Array();
@@ -67,10 +69,11 @@ document.fonts.ready.then(function()
 	
 	while(!kn)
 	{
-		var con=0,cow=0,wow=0;
+		var wow=0;
+		con=0;cow=0;
 		for(i=0;i<l1.length;i++)
 		{
-			if(lw[i]-sw[l2[i]-1]>cow)
+			if(lw[i]-sw[l2[i]-1]>=cow)
 			{
 				cow=lw[i]-sw[l2[i]-1];
 				con=i;
@@ -88,7 +91,7 @@ document.fonts.ready.then(function()
 		l2[con]-=1;
 		lw[con]-=sw[l2[con]];
 		i=l2[con];
-		dvv=wow;
+		//dvv=wow;
 		while(i<sw.length)
 		{
 			var w=0;
@@ -105,24 +108,27 @@ document.fonts.ready.then(function()
 		if(l1.length>L1.length)kn=true;
 	}
 	
+	var II=dvv-wow;
+	glt.style.marginLeft=Math.floor(II/2).toString()+"px";
+	glt.style.marginRight=(II-Math.floor(II/2)).toString()+"px";
 	var ks="";
 	var j;
 	for(i=0;i<L1.length;i++)
 	{
 		ks="";
 		var w=0;
-		var newSpan = document.createElement('span');
-		glt.appendChild(newSpan);
+		//var newSpan = document.createElement('span');
+		//glt.appendChild(newSpan);
 		for(j=L1[i];j<L2[i];j++)
 		{	
-			ks+=ss[j]+" ";
+			ks+="<span style=\"position:relative;display:inline-block;width:"+sw[j].toString()+";left:"+Math.floor((wow-Lw[i])*(j-L1[i])/(L2[i]-L1[i]))+";\">"+ss[j]+"</span>";
 			w+=sw[j];
 		}
-		newSpan.innerText=ks;
-		if(w!=Lw[i]||newSpan.offsetWidth>Lw[i])console.log(i.toString()+":"+newSpan.offsetWidth.toString()+","+Lw[i].toString()+","+w.toString());
-		glt.innerHTML+="<br>";
+		//newSpan.innerHTML=ks;
+		//if(w!=Lw[i]||newSpan.offsetWidth>Lw[i])console.log(i.toString()+":"+newSpan.offsetWidth.toString()+","+Lw[i].toString()+","+w.toString());
+		glt.innerHTML+=ks+"<br>";
 		//glt.innerHTML+=ks+"<br>";
-		glt.style.textAlignLast="justify";
+		glt.style.textAlignLast="left";
 	}
 })
 }
