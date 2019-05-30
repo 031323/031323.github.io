@@ -5,6 +5,7 @@ self.addEventListener('install', function(event) {
         '/',
         '/नर्मदादर्शनकथा',
         "5.html",
+        "4.html",
         "3.js",
         '2.js',
         '1.jpg',
