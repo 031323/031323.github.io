@@ -18,11 +18,12 @@
 </style>
 </head>
 <body onload="f1()">
-<div id="glt" style="margin-left:0;margin-right:0;font-size:x-large;word-spacing:-0.25em;font-family:Chanakya;"><span id="khchk">14243<strong>4</strong></span></div>
+<div id="glt" style="margin-left:0;margin-right:0;font-size:x-large;word-spacing:-0.25em;font-family:Chanakya;"></div>
 <script src="3.js"></script>
 <script>
-var khchk=document.getElementById("khchk");
 var glt=document.getElementById("glt");
+var khchk = document.createElement('span');
+	glt.appendChild(khchk);	
 var ss,sw,l1,l2,lw;
 var L1,L2,Lw;
 var dvv;
@@ -130,6 +131,7 @@ document.fonts.ready.then(function()
 		//glt.innerHTML+=ks+"<br>";
 		glt.style.textAlignLast="left";
 	}
+	glt.style.width=glt.offsetWidth;
 })
 }
 </script>
