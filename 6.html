@@ -33,6 +33,7 @@ var L=false;
 window.addEventListener('resize', function(event){
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
 		if(!L)return;
+	L=false;
   f1();
 });
 window.addEventListener("orientationchange", function() {
