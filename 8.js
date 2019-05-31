@@ -54,7 +54,7 @@ function S8(glt,s)
 		while(i<sw.length)
 		{
 			if(wL+sw[i]>=dvv)break;
-			if(wP+wL+sw[i]>M*(Lw.length+1))break;
+			if((wP+wL+sw[i])*nL>wl*(Lw.length+1))break;
 			else
 			{
 				wL+=sw[i];
