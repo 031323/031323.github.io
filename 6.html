@@ -17,10 +17,12 @@
   
 </style>
 </head>
-<body onload="f1()" style="margin:0 0 0 0;">
+<body onload="f1()" style="margin:0 0 0 0;font-family:Chanakya;">
 <div style="margin:0.5em 0.5em 0.5em 0.5em;">
-	<div id="d1" style="font-weight:bold;font-size:xx-large;font-family:Chanakya;"></div>
-	<div id="d2" style="font-size:x-large;font-family:Chanakya;"></div>
+	<div id="d1" style="font-weight:bold;font-size:xx-large;"></div>
+	<div id="d2" style="font-size:x-large;"></div><p>
+	<div id="d3" style="font-size:x-large;font-weight:bold;"></div>
+	<div id="d4" style="font-size:x-large;font-weight:bold;"></div>
 </div>
 <img id="hp" src="1.jpg" style="background-color:white;max-height:100vh;width:100%;object-fit:contain;" onclick="img1()"></img>
 <script src="3.js"></script>
@@ -42,11 +44,17 @@ function f1()
 	i++;
 	d1=document.getElementById("d1");
 	d2=document.getElementById("d2");
+	d3=document.getElementById("d3");
+	d4=document.getElementById("d4");
 	d1.innerHTML="";
 	d2.innerHTML="";
+	d3.innerHTML="";
+	d4.innerHTML="";
 	T=0;
 	S8(d1,"न र्म दा द र्श न क था");
 	S8(d2,s);
+	S8(d3,"स वि न्दु सि न्धु सु स्ख ल त्त र ङ्ग भ ङ्ग र ञ्जि तं द्वि ष त्सु पा प जा त जा त का रि वा रि सं यु त म् ।");
+	S8(d4,"कृ ता न्त दू त का ल भू त भी ति हा रि व र्म दे त्व दी य पा द प ङ्क जं न मा मि दे वि न र्म दे ॥");
 }
 var Img1=document.getElementById("hp");
 function img1()
