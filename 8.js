@@ -1,12 +1,11 @@
 var T=0;
 var G=false;
 var swP=new Array();
-var ssP=new Array();
-function S8(glt,s)
+function S8(glt,ss)
 {
 	G=true;
 	var khchk;
-	var ss,sw;
+	var sw;
 	var dvv,wow;
 	var L1=new Array(),L2=new Array(),Lw=new Array();
 	if(T>=swP.length)
@@ -25,16 +24,14 @@ function S8(glt,s)
 	if(T>=swP.length)
 	{
 		sw=new Array();
-		ss=s.split(' ');
 		for(i=0;i<ss.length;i++)
 		{
 			khchk.innerHTML=ss[i];
 			sw.push(khchk.offsetWidth);
 		}
 		swP.push(sw);
-		ssP.push(ss);
 	}
-	else {sw=swP[T];ss=ssP[T];}
+	else {sw=swP[T];}
 	
 	
 	var ks="";
