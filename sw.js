@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v201906010729').then(function(cache) {
+    caches.open('v201905311937').then(function(cache) {
       return cache.addAll([
         '/',
         '/नर्मदादर्शनकथा',
@@ -18,7 +18,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheKeeplist = ['v201906010729'];
+  var cacheKeeplist = ['v201905311937'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
