@@ -7,8 +7,12 @@ function S8(glt,s)
 	var ss,sw;
 	var dvv,wow;
 	var L1=new Array(),L2=new Array(),Lw=new Array();
-	khchk = document.createElement('span');
-	glt.appendChild(khchk);	
+	if(T>=swP.length)
+	{
+		khchk = document.createElement('span');
+		glt.appendChild(khchk);	
+	}
+	
 	glt.style.marginLeft=0;
 	glt.style.marginRight=0;
 	glt.style.textAlignLast="left";
@@ -31,11 +35,11 @@ function S8(glt,s)
 	else {sw=swP[T];ss=ssP[T];}
 	T++;
 	
-	khchk.innerText="";
+	var ks="";
 	for(i=1;i<=150;i++)
-		khchk.innerHTML+=i.toString()+"<br>";
+		ks+=i.toString()+"<br>";
+	glt.innerHTML=ks;
 	dvv=glt.offsetWidth-1;
-	khchk.innerText="";
 	
 	var wl=0;
 	for(i=0;i<sw.length;i++)
@@ -83,17 +87,18 @@ function S8(glt,s)
 	glt.style.marginLeft=Math.floor(II/2).toString()+"px";
 	glt.style.marginRight=(II-Math.floor(II/2)).toString()+"px";
 	var j;
+	ks="";
 	for(i=0;i<L1.length;i++)
 	{
-		var ks="";
 		var w=0;
 		for(j=L1[i];j<L2[i];j++)
 		{	
 			ks+="<span style=\"position:relative;display:inline-block;width:"+sw[j].toString()+";left:"+Math.floor((wow-Lw[i])*(j-L1[i])/(L2[i]-L1[i]))+";\">"+" "+ss[j]+"</span>";
 			w+=sw[j];
 		}
-		glt.innerHTML+=ks+"<br>";
+		ks+="<br>";
 		
 	}
+	glt.innerHTML=ks;
 	})
 }
