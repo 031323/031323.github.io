@@ -1,14 +1,7 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v201906010736').then(function(cache) {
+    caches.open('v201906011131').then(function(cache) {
       return cache.addAll([
-        '/',
-        '/नर्मदादर्शनकथा',
-        '/6',
-        "app.js",
-        "2.js",
-        "3.js",
-        "8.js",
         '1.jpg',
         'ChanakyaBBTUni.ttf',
         'ChanakyaBBTUni-Bold.ttf'
@@ -18,7 +11,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheKeeplist = ['v201906010736'];
+  var cacheKeeplist = ['v201906011131'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
@@ -34,5 +27,13 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
   );
 });
