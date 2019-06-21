@@ -48,8 +48,10 @@ var j;
 for(j=1;j<=4;j++)
 	d.push(document.getElementById("d"+j));
 var Img1=document.getElementById("hp");
+T=3;
 function f1()
 {
+	if(T<3)setTimeout(f1,0);
 	Img1.src="1-1.png";
 	console.log("f1");
 	document.title=i;
