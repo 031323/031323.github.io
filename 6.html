@@ -48,10 +48,10 @@ var j;
 for(j=1;j<=4;j++)
 	d.push(document.getElementById("d"+j));
 var Img1=document.getElementById("hp");
-T=3;
+T=4;
 function f1()
 {
-	if(T<3)setTimeout(f1,0);
+	if(T<4){setTimeout(f1,0);return;}
 	document.body.style.color="white";
 	Img1.src="1-1.png";
 	console.log("f1");
@@ -71,7 +71,7 @@ function f1()
 }
 function f2()
 {
-	if(T<3)setTimeout(f2,0);
+	if(T<4)setTimeout(f2,0);
 	else
 	{
 		document.body.style.color="black";

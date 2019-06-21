@@ -17,9 +17,7 @@ function S8(glt,ss)
 	glt.style.marginLeft=0;
 	glt.style.marginRight=0;
 	glt.style.textAlignLast="left";
-
 	document.fonts.ready.then(function(){
-	
 	var i;
 	if(T>=swP.length)
 	{
