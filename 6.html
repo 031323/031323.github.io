@@ -54,18 +54,23 @@ T=4;
 function f1()
 {
 	if(T<4
-	(!document.fonts.check('700 large Martel'))||(!document.fonts.check('normal large Martel'))||(!document.fonts.check('900 large Martel'))
+	||(!document.fonts.check('700 large Martel'))||(!document.fonts.check('normal large Martel'))||(!document.fonts.check('900 large Martel'))
 	){setTimeout(f1,0);return;}
+	
+	d[0].style.width="1000em";
+	ft=(d[0].clientWidth/1000);
+	document.title=ft.toString()+","+i;
+	
 	document.body.style.color="white";
 	Img1.src="1-1.png";
 	console.log("f1");
-	document.title=i;
 	i++;
 	for(j=1;j<=4;j++)
 		d[j-1].innerHTML="";
 	T=0;
 	
 	
+	d[0].style.width="";
 	S8(d[1-1],["1. न"].concat(("र्म दा द र्श न क था").split(' ')));
 	//S8(d1,("न र्म दा द र्श न क था").split(' '));
 	S8(d[3-1],("त्व दी य पा द प ङ्क ज न्न मा मि दे वि न र्म दे ।").split(' '));
