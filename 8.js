@@ -1,7 +1,7 @@
 var T=0;
 var G=false;
 var swP=new Array();
-swP.push([53, 21, 28, 18, 24, 19, 27, 32]);
+/*swP.push([53, 21, 28, 18, 24, 19, 27, 32]);
 swP.push([17, 14, 11, 15, 9, 9, 12, 12, 11, 16, 16, 9, 15, 10, 11, 9, 9]);
 swP.push([14, 15, 21, 13, 17, 14, 16, 23, 31, 14, 16, 15, 19, 17, 22, 13, 24, 31, 15, 15, 21, 13, 17, 14, 16, 22, 13, 16, 14, 13, 21, 15, 14, 13, 23, 25, 14, 14, 13, 16, 32, 23, 15, 14, 14, 17, 14, 14, 15, 16, 13, 15, 25, 13, 
 13, 17, 31, 15, 17, 22, 17, 14, 13, 21, 22, 14, 14, 23, 9, 23, 13, 13, 9, 29, 14, 9, 14, 21, 22, 22, 17, 21, 13, 25, 17, 23, 21, 21, 15, 15, 14, 17, 22, 33, 21, 17, 13, 17, 15, 22, 25, 13, 22, 14, 22, 14, 22, 17, 13, 23, 14, 22, 14,
@@ -21,6 +21,18 @@ swP.push([14, 15, 21, 13, 17, 14, 16, 23, 31, 14, 16, 15, 19, 17, 22, 13, 24, 31
 swP.push([14, 21, 15, 21, 15, 23, 14, 20, 17, 14, 17, 22, 16, 15, 23, 22, 15, 15, 21, 22, 15, 21, 15, 29, 20, 35, 27, 20, 17, 26, 22, 14, 21, 15, 15, 25, 14, 21, 21, 21, 21, 15, 15, 15, 23, 21, 21, 17, 14, 14, 21, 15, 21, 13, 15, 9, 20, 25, 20, 15, 17, 17, 14, 14, 15, 21, 13, 15, 25, 16, 23, 23, 14, 23, 14, 35, 25, 15, 22, 13, 31, 21, 14, 31, 14, 21, 14, 14,
  15, 22, 15, 19, 14, 15, 17, 25, 16, 25, 17, 29, 31, 21, 13, 15, 33, 27, 15, 17, 23, 28, 21, 17, 28, 21, 9, 16, 14, 17, 28, 15, 29, 16, 14, 13, 31, 14, 22, 23, 16, 23, 23, 23, 21, 9, 15, 15, 17, 25, 13, 23, 14, 15, 31, 23, 31, 23, 14, 21, 31, 24, 13, 9, 13, 17, 14, 13, 14, 12, 29, 21, 24, 26, 29, 14, 14, 17, 23, 16, 14,
  23, 16, 27, 15, 33, 15, 15, 21, 14, 14, 20, 9, 18, 16, 9, 25, 9, 18, 21, 16, 20, 27, 14, 15, 16, 9, 18, 14, 13, 23, 29, 21, 23, 21, 28, 21, 23, 21, 23, 17, 14, 25, 13, 21, 25, 21, 15, 13, 14, 31, 16, 20, 27, 14, 15, 23, 29, 21, 16, 21, 26, 9, 18, 27, 17, 16, 16, 13, 29, 23, 13, 25, 21, 17, 21, 15, 23, 22, 15, 30, 22, 15, 21, 21, 16, 9, 34, 35, 15, 26, 30, 15, 14, 14, 21, 21, 26, 21, 25, 25, 14, 15, 14, 23, 13, 22, 13, 20, 15, 13, 23, 25, 14, 21, 23, 17, 14, 12]);
+*/
+function css( element, property ) {
+    return window.getComputedStyle( element, null ).getPropertyValue( property );
+}
+function getTextWidth(text, font) {
+    // re-use canvas object for better performance
+    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    var context = canvas.getContext("2d");
+    context.font = font;
+    var metrics = context.measureText(text);
+    return metrics.width;
+}
 function S8(glt,ss)
 {
 	G=true;
@@ -30,8 +42,8 @@ function S8(glt,ss)
 	var L1=new Array(),L2=new Array(),Lw=new Array();
 	if(T>=swP.length)
 	{
-		khchk = document.createElement('span');
-		glt.appendChild(khchk);
+		//khchk = document.createElement('span');
+		//glt.appendChild(khchk);
 	}
 	
 	glt.style.marginLeft=0;
@@ -46,8 +58,9 @@ function S8(glt,ss)
 		sw=new Array();
 		for(i=0;i<ss.length;i++)
 		{
-			khchk.innerHTML=ss[i];
-			sw.push(khchk.offsetWidth);
+			//khchk.innerHTML=ss[i];
+			//sw.push(khchk.offsetWidth);
+			sw.push(getTextWidth(ss[i],css(glt,'font-weight')+" "+css(glt,'font-size')+" "+css(glt,'font-family')))
 		}
 		swP.push(sw);
 	}
