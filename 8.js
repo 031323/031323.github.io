@@ -32,7 +32,6 @@ function S8(glt,ss)
 	var i;
 	if(T>=swP.length)
 	{
-		console.log("88");
 		//document.title="88";
 		sw=new Array();
 		for(i=0;i<ss.length;i++)
@@ -46,10 +45,10 @@ function S8(glt,ss)
 	else {sw=swP[T];}
 	
 	
-	var ks="";
+	/*var ks="";
 	for(i=1;i<=150;i++)
 		ks+=i.toString()+"<br>";
-	glt.innerHTML=ks;
+	glt.innerHTML=ks;*/
 	dvv=glt.offsetWidth-1;
 	
 	var wl=0;
