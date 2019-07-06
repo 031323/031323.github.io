@@ -115,7 +115,7 @@ function S8(glt,ss)
 		ks+="<br>";
 		
 	}
-	glt.innerHTML=ks;
+	glt.innerHTML="व";//ks;
 	T++;
 	G=false;
 	//})
