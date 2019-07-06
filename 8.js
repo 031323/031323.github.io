@@ -1,5 +1,4 @@
 var T=0;
-var G=false;
 var swP=new Array();
 
 function css( element, property ) {
@@ -15,7 +14,6 @@ function getTextWidth(text, font) {
 }
 function S8(glt,ss)
 {
-	G=true;
 	var khchk;
 	var sw;
 	var dvv,wow;
@@ -115,8 +113,7 @@ function S8(glt,ss)
 		ks+="<br>";
 		
 	}
-	glt.innerHTML="व";//ks;
+	glt.innerHTML=ks;
 	T++;
-	G=false;
 	//})
 }
