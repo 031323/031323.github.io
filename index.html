@@ -3,15 +3,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>142434</title>
+<style>
+a {
+    text-decoration:none;
+    color:DarkOrange;
+}
+</style>
 </head>
-<body style="background-color:white;margin:0;
-	word-spacing: -0.25em ;text-align: justify;">
-<div style="margin:0.5em;background-color:white;">
-<ul>
-<li><a href="6">नर्मदादर्शनकथा</a></li>
-</ul>
+<body onload="f1()" style="overflow-y:scroll;color:white;background-color:white;margin:0;font-size:x-large;">
+<div style="text-align:center;margin:0.5em 0.5em 0.5em 0.5em;">
+<p><img src="logo.svg" style="width:2em;max-width:100%;"/><p>
+<div style="margin:auto;max-width:14em;"><div id="d1" style="margin:0;">। ।</div></div><p>
+<div id="d2" style="margin:0;">। ।</div>
 </div>
 <script src="app.js"></script>
 <script src="8.js"></script>
+<script>
+var E=document.body.offsetWidth;
+window.addEventListener('resize', function(event){
+	if(E!=document.body.offsetWidth)
+	{
+		E=document.body.offsetWidth;
+		f1();
+	}
+});
+function f1()
+{
+	S8(d1,("के यू रा णि न भू ष य न्ति पु रु षं हा रा न च न्द्रो ज्ज्व ला न स्ना नं न वि ले प नं न कु सु मं ना ल ङ्कृ ता मू र्ध जा:। kck वा ण्ये का स म ल ङ्क रो ति पु रु षं या सं स्कृ ता धा र्य ते  क्षी य न्ते ख लु भू ष णा नि स त तं वा ग्भू ष ण म्भू ष ण म्॥").split(' '));
+	S8(d2,("कि म ध्ये त व्य म् ?").split(' '));
+	d2.innerHTML='<a href="6">'+d2.innerHTML+'</a>';
+	d1.style.color="grey";
+	document.body.style.color="black";
+}
+</script>
 </body>
 </html>

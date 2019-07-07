@@ -1,10 +1,10 @@
-var T=0;
 var swP=new Array();
 
 function css( element, property ) {
     return window.getComputedStyle( element, null ).getPropertyValue( property );
 }
 function getTextWidth(text, font) {
+	if(text==='kck')return getTextWidth(' ',font);
     // re-use canvas object for better performance
     var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
     var context = canvas.getContext("2d");
@@ -18,11 +18,7 @@ function S8(glt,ss)
 	var sw;
 	var dvv,wow;
 	var L1=new Array(),L2=new Array(),Lw=new Array();
-	if(T>=swP.length)
-	{
-		//khchk = document.createElement('span');
-		//glt.appendChild(khchk);
-	}
+	
 	
 	glt.style.marginLeft=0;
 	glt.style.marginRight=0;
@@ -30,8 +26,6 @@ function S8(glt,ss)
 	glt.style.wordSpacing="-.25em";
 	//document.fonts.ready.then(function(){
 	var i;
-	if(T>=swP.length)
-	{
 		//document.title="88";
 		sw=new Array();
 		for(i=0;i<ss.length;i++)
@@ -41,8 +35,7 @@ function S8(glt,ss)
 			sw.push(getTextWidth(ss[i],css(glt,'font-weight')+" "+css(glt,'font-size')+" "+css(glt,'font-family')))
 		}
 		//swP.push(sw);
-	}
-	else {sw=swP[T];}
+
 	
 	
 	/*var ks="";
@@ -118,16 +111,16 @@ function S8(glt,ss)
 		var w=0;
 		for(j=L1[i];j<L2[i];j++)
 		{	
-			//ks+="<span style=\"position:relative;display:inline-block;width:"+sw[j].toString()+
-			//";left:"+((wow-Lw[i])*(j-L1[i])/(L2[i]-L1[i]))+
-			//";\">"+" "+ss[j]+"</span>";
-			ks+=ss[j]+" ";
+			if(ss[j]==='kck')ss[j]='';
+			ks+="<span style=\"position:relative;display:inline-block;width:"+sw[j].toString()+
+			";left:"+((wow-Lw[i])*(j-L1[i])/(L2[i]-L1[i]))+
+			";\">"+" "+ss[j]+"</span>";
+			//ks+=ss[j]+" ";
 			w+=sw[j];
 		}
 		ks+="<br>";
 		
 	}
 	glt.innerHTML=ks;
-	T++;
 	//})
 }
