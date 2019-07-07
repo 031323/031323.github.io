@@ -51,14 +51,27 @@ function S8(glt,ss)
 	glt.innerHTML=ks;*/
 	dvv=glt.offsetWidth-1;
 	
-	var wl=0;
+	var wl=0,wW=0;
 	for(i=0;i<sw.length;i++)
+	{
 		wl+=sw[i];
+		if(sw[i]>wW)wW=sw[i];
+	}
 	
-	var M=dvv-wl/sw.length;
-	var nL=Math.ceil(wl/M);
+	var H=0;
+	
+	var M1=dvv-wW;//wl/sw.length;
+	var nL=Math.ceil(wl/M1);
+	var JnL=dvv/(getTextWidth("ॐ",css(glt,'font-weight')+" "+css(glt,'font-size')+" "+css(glt,'font-family'))*2.0);
+	if(nL>JnL)H=1;
+	//if(wl/nL>dvv*nL/(nL+1))nL++;
+	/*function ty(n)
+	{
+		if(n==JnL)return dvv*(JnL-1)/JnL;
+	}*/
+	
 	while(true){
-	M=wl/nL;
+	var M=wl/nL;
 	i=0;
 	var wP=0;
 	while(i<sw.length)
@@ -82,6 +95,7 @@ function S8(glt,ss)
 	if(Lw.length>nL)
 	{
 		console.log(142435);
+		ddocument.body.style.backgroundColor="Cyan";
 		nL++;
 		L1=new Array();
 		L2=new Array();
@@ -94,6 +108,7 @@ function S8(glt,ss)
 		if(Lw[i]>wow)wow=Lw[i];
 
 	var II=dvv-wow;
+	//if(H==1)II=0;
 	glt.style.marginLeft=Math.floor(II/2).toString()+"px";
 	glt.style.marginRight=(II-Math.floor(II/2)).toString()+"px";
 	var j;

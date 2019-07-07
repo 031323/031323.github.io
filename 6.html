@@ -30,8 +30,7 @@
 </div><p>
 <img id="hp" src="1-1.png" style="background-color:white;max-height:100vh;width:100%;object-fit:contain;" onclick="img1()"></img>
 <div style="text-align:center;margin:0.5em 0.5em 0.5em 0.5em;">
-	<div style="margin:auto;max-width:32em;"><div id="d3" style="font-size:x-large;">। ।</div></div>
-	<div id="d4" style="font-size:normal;font-weight:900;">। ।</div>
+	<div id="d3" style="font-size:normal;font-weight:900;">। ।</div>
 </div>
 <script src="3.js"></script>
 <script src="8.js"></script>
@@ -47,10 +46,10 @@ window.addEventListener('resize', function(event){
 });
 var d=new Array();
 var j;
-for(j=1;j<=4;j++)
+for(j=1;j<=3;j++)
 	d.push(document.getElementById("d"+j));
 var Img1=document.getElementById("hp");
-T=4;
+T=3;
 function f1()
 {
 	//if(	(!document.fonts.check('700 large Martel'))||(!document.fonts.check('normal large Martel'))||(!document.fonts.check('900 large Martel'))	){setTimeout(f1,0);return;}
@@ -73,9 +72,8 @@ function f1()
 	
 	//S8(d[1-1],["1. न"].concat(("र्म दा द र्श न क था").split(' ')));
 	S8(d[1-1],("न र्म दा द र्श न क था").split(' '));
-	S8(d[2-1],s);
-	S8(d[3-1],s2);
-	S8(d[4-1],("त्व दी य पा द प ङ्क ज न्न मा मि दे वि न र्म दे ।").split(' '));
+	S8(d[2-1],s.concat(s2));
+	S8(d[3-1],("त्व दी य पा द प ङ्क ज न्न मा मि दे वि न र्म दे ।").split(' '));
 	Img1.src="1.jpg";
 	document.body.style.color="black";
 }

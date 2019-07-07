@@ -1,17 +1,17 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v201906011131').then(function(cache) {
+    caches.open('v201907070947').then(function(cache) {
       return cache.addAll([
         '1.jpg',
-        'ChanakyaBBTUni.ttf',
-        'ChanakyaBBTUni-Bold.ttf'
+        //'ChanakyaBBTUni.ttf',
+        //'ChanakyaBBTUni-Bold.ttf'
       ]);
     })
   );
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheKeeplist = ['v201906011131'];
+  var cacheKeeplist = ['v201907070947'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
