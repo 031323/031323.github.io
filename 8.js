@@ -52,8 +52,9 @@ function S8(glt,ss)
 	}
 	
 	var H=0;
-	
+	var chil=1;
 	var M1=dvv-wW;//wl/sw.length;
+	M1/=chil;
 	var nL=Math.ceil(wl/M1);
 	var JnL=dvv/(getTextWidth("ॐ",css(glt,'font-weight')+" "+css(glt,'font-size')+" "+css(glt,'font-family'))*2.0);
 	if(nL>JnL)H=1;
@@ -63,7 +64,6 @@ function S8(glt,ss)
 		if(n==JnL)return dvv*(JnL-1)/JnL;
 	}*/
 	
-	while(true){
 	var M=wl/nL;
 	i=0;
 	var wP=0;
@@ -89,17 +89,17 @@ function S8(glt,ss)
 	{
 		console.log(142435);
 		ddocument.body.style.backgroundColor="Cyan";
-		nL++;
-		L1=new Array();
-		L2=new Array();
-		Lw=new Array();
+		return;
 	}
-	else break;
-	}
-	wow=0;
+	
+	wow=0;wou=dvv;
 	for(i=0;i<Lw.length;i++)
+	{
 		if(Lw[i]>wow)wow=Lw[i];
-
+		if(Lw[i]<wou)wou=Lw[i];
+	}
+	
+	wow=Math.min(wow*chil,dvv);
 	var II=dvv-wow;
 	//if(H==1)II=0;
 	glt.style.marginLeft=Math.floor(II/2).toString()+"px";
