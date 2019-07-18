@@ -10,7 +10,7 @@ a {
 }
 </style>
 </head>
-<body onload="f1()" style="overflow-y:scroll;color:white;background-color:white;margin:0;font-size:x-large;">
+<body onload="f1();" style="display:none;overflow-y:scroll;color:white;background-color:white;margin:0;font-size:x-large;">
 
 <div style="text-align:center;margin:0.5em 0.5em 0.5em 0.5em;">
 	<svg style="width:2em;max-width:100%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
@@ -28,6 +28,7 @@ a {
 <!--<script src="8.js"></script>-->
 <script src="43.js"></script>
 <script>
+
 var E=document.body.offsetWidth;
 window.addEventListener('resize', function(event){
 	if(E!=document.body.offsetWidth)
@@ -38,6 +39,7 @@ window.addEventListener('resize', function(event){
 });
 function f1()
 {
+	document.body.style.display="";
 	var sp=getTextWidth(' ',css(p1,'font-weight')+" "+css(p1,'font-size')+" "+css(p1,'font-family'));
 	p1.style.textAlign="left";
 	p1.innerHTML=f43(["संस्कृतम","्","","अ","धीतेन","","ा","अ","थ","","","","कि","म्","ङ्","","कर्तव्यम्?"],p1.offsetWidth,0,p1)
