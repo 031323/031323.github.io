@@ -26,6 +26,7 @@ a:hover
 		<rect  rx="00" ry="00" width="200" height="300" fill="rgb(0,0,130)" />
 		<rect  x="100" y="200" width="200" height="100" fill="rgb(0,0,130)" />
 		<rect  x="100" y="000" width="200" height="100" fill="rgb(125,125,225)" />
+		<circ x="200" y="150" r="50" fill="rgb(50,50,50)" />
 	</svg>
 	<div style="margin:0;height:1em;"></div>
 	<p style="white-space:nowrap;margin:0;color:black;" id="p1"></p>
@@ -52,9 +53,10 @@ function f1()
 	document.body.style.display="";
 	var sp=getTextWidth(' ',css(p1,'font-weight')+" "+css(p1,'font-size')+" "+css(p1,'font-family'));
 	p1.style.textAlign="left";
-	p1.innerHTML=f43(["संस्कृतम","्","","अ","धीतवता","","","अ","थ","","","","कि","म्","ङ्","","कर्तव्यम्?"],p1.offsetWidth,0,p1)
+	p1.innerHTML=f43(["संस्कृत","म्","म","अ","धीतवता","","","अ","थ","","","","कि","म्","ङ्क","क","र्तव्यम्?"],p1.offsetWidth-1,0,p1,true)
 		+"<span id=\"p1s1\" style=\"display:inline-block;width:"+sp+"\"></span>";
-	p1.innerHTML+=f43(["नन","ु","्वि","इ","मे","","","","अध्येतव्ये!"],p1.offsetWidth,p1s1.offsetLeft-p1.offsetLeft+sp,p1);
+	if(p1s1.offsetLeft==p1.offsetLeft)p1s1.style.width="0";
+	p1.innerHTML+=f43(["न","नु","न्वि","इ","मे","","","","अध्येतव्ये!"],p1.offsetWidth-1,p1s1.offsetLeft-p1.offsetLeft+p1s1.offsetWidth,p1,true);
 	p1.style.textAlign="center";
 }
 </script>
