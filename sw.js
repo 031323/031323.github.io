@@ -32,7 +32,10 @@ self.addEventListener('fetch', function(event) {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+        fetch(event.request).then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
       }
     )
   );
