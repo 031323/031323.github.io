@@ -1,0 +1,66 @@
+<html lang="sa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<script src="43.js"></script>
+<script>
+window.customElements.define('text-box', class extends HTMLElement {
+	constructor(){
+		super();
+	}
+	f43_i()
+	{
+			this.लेखः=eval(this.getAttribute('text'));
+	}
+	f43_2()
+	{
+		console.log('f43');
+		this.innerHTML="";
+		let sp=getTextWidth(' ',css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'));
+		let i=0;
+		var thiss1;
+		for(i=0;i<this.लेखः.length;i++)
+		{
+			let s=0;
+			if(i!=0&&this.लेखः[i][0])
+			{
+				s=thiss1.offsetLeft-this.offsetLeft+thiss1.offsetWidth;
+			}
+			this.innerHTML+=f43(this.लेखः[i].slice(1,this.लेखः[i].length),this.offsetWidth-1,s,this,true);
+			if(i!=this.लेखः.length-1)
+			{
+				thiss1=document.createElement("span");
+				thiss1.style="display:inline-block;width:"+sp+";";
+				this.appendChild(thiss1);
+				if(thiss1.offsetLeft==this.offsetLeft)thiss1.style.width="0";
+			}
+		}		
+	}
+	n=0;
+	attributeChangedCallback(attr,oldVal,newVal) {
+		if(this.n){this.n++;this.f43_i();this.f43_2();}
+  }
+  static get observedAttributes(){
+		return ['text'];
+	}
+	connectedCallback(){
+		var E=document.body.offsetWidth;
+		this.f43_i();
+		this.f43_2();
+		let tb=this;
+		window.addEventListener('resize',function(event)
+		{
+			if(E!=document.body.offsetWidth)
+			{
+				E=document.body.offsetWidth;
+				tb.f43_2();
+			}
+		});
+	}
+});
+</script>
+<text-box id="tb1" style="text-align:left;display:block;" text='[[false,"संस्कृत","म्।","म","अ","धीतवता","","","अ","थ","।","","","कि","म्।","ङ्क","क","र्तव्यम्?"],[false,"न","नु।","न्वि","इ","मे","।","","","अध्येतव्ये!"]]'></text-box>
+</body>
+</html>
