@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body style="text-align:center;margin:0;padding:0;">
 <script src="43.js"></script>
 <script>
 window.customElements.define('text-box', class extends HTMLElement {
@@ -38,9 +38,7 @@ window.customElements.define('text-box', class extends HTMLElement {
 			}
 		}		
 	}
-	n=0;
 	attributeChangedCallback(attr,oldVal,newVal) {
-		if(this.n){this.n++;this.f43_i();this.f43_2();}
   }
   static get observedAttributes(){
 		return ['text'];
@@ -61,6 +59,8 @@ window.customElements.define('text-box', class extends HTMLElement {
 	}
 });
 </script>
-<text-box id="tb1" style="text-align:left;display:block;" text='[[false,"संस्कृत","म्।","म","अ","धीतवता","","","अ","थ","।","","","कि","म्।","ङ्क","क","र्तव्यम्?"],[false,"न","नु।","न्वि","इ","मे","।","","","अध्येतव्ये!"]]'></text-box>
+<div style="margin:0.5em;">
+<text-box id="tb1" style="margin:0em;padding:0em;width:20em;max-width:100%;margin:0;padding:0;text-align:left;display:inline-block;" text='[[false,"संस्कृत","म्","म","अ","धीतवता","","","अ","थ","","","","कि","म्","ङ्क","क","र्तव्यम्?"],[false,"न","नु","न्वि","इ","मे","","","","अध्येतव्ये!"],[false,"अस्तु।"]]'></text-box>
+</div>
 </body>
 </html>
