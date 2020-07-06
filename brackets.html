@@ -32,7 +32,7 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 			let j=0;
 			for(j=0;j<m1;j++)उपलेखः='['+उपलेखः;
 			for(j=0;j<m2;j++)उपलेखः+=']';
-			if(typeof लेखः[i]!='object'||लेखः[i].length<2||getTextWidth(उपलेखः,css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'))<=this.offsetWidth-1)
+			if(typeof लेखः[i]!='object'||लेखः[i].length<2||getTextWidth(उपलेखः.replace(/&nbsp;/g,' '),css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'))<=this.offsetWidth-1)
 				this.innerHTML+=उपलेखः+' ';
 			else
 				this.print(लेखः[i][1],m1,m2);
