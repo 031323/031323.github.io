@@ -23,7 +23,7 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 		{
 			let उपलेखः="";
 			if(typeof लेखः[i]!='object')
-				उपलेखः='&nbsp;'+लेखः[i][0]+'&nbsp;';
+				उपलेखः='&nbsp;'+लेखः[i]+'&nbsp;';
 			else if(लेखः[i].length==0)continue;
 			else उपलेखः='&nbsp;'+लेखः[i][0]+'&nbsp;';
 			let m1=1,m2=1;
