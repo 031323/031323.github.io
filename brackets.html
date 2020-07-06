@@ -18,18 +18,21 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 	print(लेखः,n1,n2)
 	{
 		let i=0;
+		if(typeof लेखः!='object')return;
 		for(i=0;i<लेखः.length;i++)
 		{
-			if(लेखः[i].length==0)continue;
+			let उपलेखः="";
+			if(typeof लेखः[i]!='object')
+				उपलेखः=लेखः[i];
+			else if(लेखः[i].length==0)continue;
+			else उपलेखः=लेखः[i][0];
 			let m1=1,m2=1;
 			if(i==0)m1+=n1;
 			if(i==लेखः.length-1)m2+=n2;
-			let उपलेखः="";
 			let j=0;
-			for(j=0;j<m1;j++)उपलेखः+='(';
-			उपलेखः+=लेखः[i][0];
+			for(j=0;j<m1;j++)उपलेखः='('+उपलेखः;
 			for(j=0;j<m2;j++)उपलेखः+=')';
-			if(getTextWidth(उपलेखः,css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'))<=this.offsetWidth-1||लेखः[i].length<2)
+			if(typeof लेखः[i]!='object'||लेखः[i].length<2||getTextWidth(उपलेखः,css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'))<=this.offsetWidth-1)
 				this.innerHTML+=उपलेखः+' ';
 			else
 				this.print(लेखः[i][1],m1,m2);
@@ -40,6 +43,7 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 		console.log('bracket');
 		this.innerHTML="";
 		this.print(this.लेखः,0,0);
+		if(this.innerHTML[this.innerHTML.length-1]==' ')this.innerHTML=this.innerHTML.slice(0,-1);
 	}
 	attributeChangedCallback(attr,oldVal,newVal) {
   }
@@ -63,7 +67,30 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 });
 </script>
 <div style="margin:0.5em;">
-<bracket-box id="b1" style="margin:0em;padding:0em;width:20em;max-width:100%;margin:0;padding:0;text-align:left;display:inline-block;" text='[["संस्कृतमधीतवताथकिङ्कर्त्तव्यम्",[["संस्कृतमधीतवता",[["संस्कृतम्"],["अधीतवता"]]],["अथकिङ्कर्त्तव्यम्"]]],["नन्विमेअध्येतव्ये"]]'></bracket-box>
+<bracket-box id="b1" style="margin:0em;padding:0em;width:20em;max-width:100%;margin:0;padding:0;text-align:left;display:inline-block;" text='
+[
+	["संस्कृतमधीतवताथकिङ्कर्त्तव्यम्",[
+		["संस्कृतमधीतवता",[
+			"संस्कृतम्",
+			"अधीतवता"
+		]],
+		["अथकिङ्कर्त्तव्यम्",[
+			"अथ",
+			["किङ्कर्त्तव्यम्",[
+				"किम्",
+				"कर्त्तव्यम्"
+			]]
+		]]
+	]],
+	["नन्विमेअध्येतव्ये",[
+		"ननु",
+		["इमेअध्येतव्ये",[
+			"इमे",
+			"अध्येतव्ये"
+		]]
+	]]
+]
+'></bracket-box>
 </div>
 </body>
 </html>
