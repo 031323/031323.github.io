@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>031323</title>
 </head>
-<body style="text-align:center;margin:0;padding:0;">
+<body style="font-family:'';color:white;background-color:black;text-align:center;margin:0;padding:0;">
 <script src="43.js"></script>
 <script>
 window.customElements.define('bracket-box', class extends HTMLElement {
@@ -17,6 +17,7 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 	}
 	print(लेखः,n1,n2)
 	{
+		let H=parseInt(window.getComputedStyle(this,null).getPropertyValue('width'));
 		let i=0;
 		if(typeof लेखः!='object')return;
 		for(i=0;i<लेखः.length;i++)
@@ -32,7 +33,7 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 			let j=0;
 			for(j=0;j<m1;j++)उपलेखः='['+उपलेखः;
 			for(j=0;j<m2;j++)उपलेखः+=']';
-			if(typeof लेखः[i]!='object'||लेखः[i].length<2||getTextWidth(उपलेखः.replace(/&nbsp;/g,' '),css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'))<=this.offsetWidth-1)
+			if(typeof लेखः[i]!='object'||लेखः[i].length<2||getTextWidth(उपलेखः.replace(/&nbsp;/g,' '),css(this,'font-weight')+" "+css(this,'font-size')+" "+css(this,'font-family'))<=H)
 				this.innerHTML+=उपलेखः+' ';
 			else
 				this.print(लेखः[i][1],m1,m2);
@@ -67,30 +68,32 @@ window.customElements.define('bracket-box', class extends HTMLElement {
 });
 </script>
 <div style="margin:0.5em;">
-<bracket-box id="b1" style="margin:0em;padding:0em;width:20em;max-width:100%;margin:0;padding:0;text-align:left;display:inline-block;" text='
+<div style="background-color:black;color:white;margin:0em;padding:0em;width:30em;max-width:100%;padding:0;text-align:left;display:inline-block;">
+<bracket-box id="b1" style="border-width:0.1em;border-style:solid;border-color:white;display:block;padding:0.5em;" text='
 [
-	["संस्कृतमधीतवताथकिङ्कर्त्तव्यम्",[
-		["संस्कृतमधीतवता",[
-			"संस्कृतम्",
-			"अधीतवता"
+	["संस्कृ॑त॒मधी॑तव॒ताथ॒किङ्क॑र्त्त॒व्य॑म्",[
+		["संस्कृ॑त॒मधी॑तवता",[
+			"संस्कृ॑तम्",
+			"अधी॑तवता"
 		]],
-		["अथकिङ्कर्त्तव्यम्",[
-			"अथ",
-			["किङ्कर्त्तव्यम्",[
+		["अथ॒किङ्क॑र्त्त॒व्य॑म्",[
+			"अथ॑",
+			["किङ्क॑र्त्त॒व्य॑म्",[
 				"किम्",
-				"कर्त्तव्यम्"
+				"क॒र्त्त॒व्य॑म्"
 			]]
 		]]
 	]],
-	["नन्विमेअध्येतव्ये",[
-		"ननु",
-		["इमेअध्येतव्ये",[
-			"इमे",
-			"अध्येतव्ये"
+	["न॒न्वि१॒॑मेअ॑ध्येत॒व्ये॑",[
+		"न॒नु",
+		["इ॒मेअ॑ध्येत॒व्ये॑",[
+			"इ॒मे",
+			"अ॒ध्ये॒त॒व्ये॑"
 		]]
 	]]
 ]
 '></bracket-box>
+</div>
 </div>
 </body>
 </html>
