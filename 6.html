@@ -3,36 +3,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>नर्मदादर्शनकथा</title>
-<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Martel:regular,700,900">
-<style>
-@font-face {
-  font-family: "Chanakya";
-  src: url("ChanakyaBBTUni.ttf");
-  }
-  
-@font-face {
-  font-family: "Chanakya";
-  src: url("ChanakyaBBTUni-Bold.ttf");
-  font-weight: bold;
-  }
   
 </style>
 </head>
-<body onload="f1()" style="overflow-y:scroll;font-size:normal;white-space: nowrap;color:white;margin:0 0 0 0;font-family:serif;">
+<body onload="f1()" style="overflow-y:scroll;font-size:normal;white-space: nowrap;color:white;margin:0 0 0 0;">
+<canvas height="0" id="canvas"></canvas>
 <div style="text-align:center;margin:0.5em 0.5em 0.5em 0.5em;">
 	<div style="margin:auto;max-width:32em;">
-		<div id="d1" style="font-weight:700;font-size:xx-large;">। ।</div>
+		<div id="d1" style="font-weight:700;font-size:xx-large;">नर्मदादर्शनकथा</div>
 	</div>
 	<div style="margin:auto;max-width:32em;">
-		<div id="d2" style="font-size:x-large;">। ।</div>
+		<div id="d2" style="font-size:x-large;">नर्मदादर्शनकथा</div>
 	</div>
 </div><p>
 <div style="margin:auto;max-width:32em;">
 	<img id="hp" src="1-1.png" style="background-color:white;max-height:100vh;width:100%;object-fit:contain;" onclick="img1()"></img>
 </div>
 <div style="text-align:center;margin:0.5em 0.5em 0.5em 0.5em;">
-	<div id="d3" style="font-size:normal;font-weight:900;">। ।</div>
+	<div id="d3" style="font-size:normal;font-weight:900;">नर्मदादर्शनकथा</div>
 </div>
 <script src="3.js"></script>
 <script src="8.js"></script>
@@ -53,7 +41,7 @@ var Img1=document.getElementById("hp");
 function f1()
 {
 	//if(	(!document.fonts.check('700 large Martel'))||(!document.fonts.check('normal large Martel'))||(!document.fonts.check('900 large Martel'))	){setTimeout(f1,0);return;}
-	
+	document.fonts.ready.then(function(){
 	Img1.src="1-1.png";
 	console.log("f1");
 	
@@ -63,7 +51,7 @@ function f1()
 	S8(d[2-1],s.concat(s2));
 	S8(d[3-1],("त्व दी य पा द प ङ्क ज न्न मा मि दे वि न र्म दे ।").split(' '));
 	Img1.src="1.jpg";
-	document.body.style.color="black";
+	document.body.style.color="black";});
 }
 function f45()
 {

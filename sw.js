@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v201907070947').then(function(cache) {
+    caches.open('v202007191220').then(function(cache) {
       return cache.addAll([
         '1.jpg',
         //'ChanakyaBBTUni.ttf',
@@ -11,7 +11,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var cacheKeeplist = ['v201907070947'];
+  var cacheKeeplist = ['v202007191220'];
 
   event.waitUntil(
     caches.keys().then(function(keyList) {
@@ -26,7 +26,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.open('v201907070947').then(function(cache) {
+    caches.open('v202007191220').then(function(cache) {
       return cache.match(event.request).then(function (response) {
         return response || fetch(event.request).then(function(response) {
           cache.put(event.request, response.clone());
