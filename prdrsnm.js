@@ -1,23 +1,45 @@
+const color1="#900000",color2="cornsilk";
+function abort()
+{
+	setTimeout(function(){location.reload()},5000);
+}
 var c=document.createElement('Canvas');
-var s=document.createElementNS("http://www.w3.org/2000/svg",'svg');
 document.body.style.margin=0;
-document.body.style.display='flex';
-document.body.style.justifyContent='center';
-document.body.style.alignItems='flex-end';
+var flex=document.createElement('Div');
+flex.style.display='flex';
+flex.style.height='100%';
+flex.style.alignItems='center';
+flex.style.flexDirection='column';
+var ld=document.createElement('Div');
+var cd=document.createElement('Div');
+var logo=new Image();
+logo.onerror=(e)=>{console.log(e);abort();}
+logo.src='1.svg'
+logo.style.maxHeight='50vmin';
+logo.style.height='10em';
+ld.style.flexGrow=1;
+ld.style.display='flex';
+ld.style.alignItems='center';
+ld.style.justifyContent='center';
+ld.style.backgroundColor=color1;
+ld.style.width='100%';
+ld.style.textAlign='center';
+logo.onload=()=>{
+	flex.appendChild(ld);
+	ld.appendChild(logo);
+	cd.appendChild(c);
+	flex.appendChild(cd);
+	document.body.appendChild(flex);
+}
 c.style.imageRendering='crisp-edges';
 c.style.imageRendering='pixelated';
 c.width=32;
 c.height=16;
-c.style.width='16em';
 c.style.height='8em';
-c.style.maxWidth='100vmin';
 c.style.maxHeight='50vmin';
-const color1="#900000",color2="white";
 function cn(n)
 {
 	let ctx=c.getContext("2d");
-	//ctx.fillStyle = "#000000";
-	//ctx.fillRect(0, 0,c.width,c.height);
 	ctx.clearRect(0, 0,c.width,c.height);
 	ctx.fillStyle = color2;
 	for(let i=0;i<3;i++)
@@ -33,14 +55,11 @@ function cn(n)
 		}
 	}
 }
-document.body.appendChild(c);
 var i=0;
 var arbdh=false;
 function cb(n)
 {
 	let ctx=c.getContext("2d");
-	//ctx.fillStyle = "#000000";
-	//ctx.fillRect(0, 0,c.width,c.height);
 	ctx.clearRect(0, 0,c.width,c.height);
 	const bmp=[[2,2,3,2],[2,1,2,3],[1,2,3,2]];
 	for(let i=0;i<3;i++)
@@ -90,11 +109,5 @@ function cr()
 	setTimeout(cr,t*100);
 }
 cr();
-function abort()
-{
-	document.body.removeChild(c);
-	document.body.style.backgroundColor='red';
-	setTimeout(function(){location.reload()},5000);
-}
 if(typeof suvagarmbh==="undefined")abort();
 suvagarmbh(()=>{arbdh=true;},abort);
