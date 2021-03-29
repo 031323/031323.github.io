@@ -3,7 +3,7 @@ var s=document.createElementNS("http://www.w3.org/2000/svg",'svg');
 document.body.style.margin=0;
 document.body.style.display='flex';
 document.body.style.justifyContent='center';
-document.body.style.alignItems='center';
+document.body.style.alignItems='flex-end';
 c.style.imageRendering='crisp-edges';
 c.style.imageRendering='pixelated';
 c.width=32;
@@ -12,12 +12,14 @@ c.style.width='16em';
 c.style.height='8em';
 c.style.maxWidth='100vmin';
 c.style.maxHeight='50vmin';
+const color1="#900000",color2="white";
 function cn(n)
 {
 	let ctx=c.getContext("2d");
-	ctx.fillStyle = "#000000";
-	ctx.fillRect(0, 0,c.width,c.height);
-	ctx.fillStyle = "#FFFFFF";
+	//ctx.fillStyle = "#000000";
+	//ctx.fillRect(0, 0,c.width,c.height);
+	ctx.clearRect(0, 0,c.width,c.height);
+	ctx.fillStyle = color2;
 	for(let i=0;i<3;i++)
 	{
 		if(n!=i+1)
@@ -25,9 +27,9 @@ function cn(n)
 		else
 		{
 			ctx.fillRect(5+i*8,5,6,6);
-			ctx.fillStyle = "#000000";
+			ctx.fillStyle = color1;
 			ctx.fillRect(6+i*8,6,4,4);
-			ctx.fillStyle = "#FFFFFF";
+			ctx.fillStyle = color2;
 		}
 	}
 }
@@ -37,12 +39,13 @@ var arbdh=false;
 function cb(n)
 {
 	let ctx=c.getContext("2d");
-	ctx.fillStyle = "#000000";
-	ctx.fillRect(0, 0,c.width,c.height);
-	const bmp=[[2,2,2,2],[1,2,3,2],[2,2,3,2]];
+	//ctx.fillStyle = "#000000";
+	//ctx.fillRect(0, 0,c.width,c.height);
+	ctx.clearRect(0, 0,c.width,c.height);
+	const bmp=[[2,2,3,2],[2,1,2,3],[1,2,3,2]];
 	for(let i=0;i<3;i++)
 	{
-		let bg='#000000',fg='#FFFFFF';
+		let bg=color1,fg=color2;
 		if(i+1==n)
 		{
 			[bg,fg]=[fg,bg];
