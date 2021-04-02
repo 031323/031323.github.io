@@ -13,6 +13,8 @@ document.body.style.textAlign='center';
 var flex=document.createElement('Div');
 flex.style.display='flex';
 flex.style.height='100%';
+flex.style.width='100vmin';
+flex.style.margin='auto';
 flex.style.alignItems='center';
 flex.style.flexDirection='column';
 flex.style.backgroundColor=color3;
@@ -28,13 +30,13 @@ if(box)
 var logo=new Image();
 logo.onerror=(e)=>{console.log(e);abort();}
 logo.src='1.svg'
-logo.style.height='10em';
-logo.style.width='20em';
-logo.style.height='33vh';
-logo.style.width='100vw';
-logo.style.maxHeight='33vh';
-logo.style.maxWidth='100vw';
-logo.style.objectFit='contain';
+logo.style.height='28vh';
+//logo.style.width='20em';
+//logo.style.height='33vh';
+//logo.style.width='100vw';
+logo.style.maxHeight='50vw';
+//logo.style.maxWidth='100vw';
+//logo.style.objectFit='contain';
 
 var ld=document.createElement('Div');
 ld.style.flexGrow=1;
@@ -55,13 +57,13 @@ c.style.imageRendering='crisp-edges';
 c.style.imageRendering='pixelated';
 c.height=18;
 c.width=26;
-c.style.height='9em';
-c.style.width='13em';
+//c.style.height='9em';
+//c.style.width='13em';
 c.style.height='69vw';
-c.style.width='100vw';
+//c.style.width='100vw';
 c.style.maxHeight='39vh';
-c.style.maxWidth='100vw';
-c.style.objectFit='contain';
+//c.style.maxWidth='100vw';
+//c.style.objectFit='contain';
 function cn(n)
 {
 	let ctx=c.getContext("2d");
