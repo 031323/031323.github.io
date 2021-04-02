@@ -6,7 +6,7 @@
      width="1.70667in" height="0.853333in"
      viewBox="0 0 512 256">
   <path id="Path"
-        fill="cornsilk" stroke="cornsilk" stroke-width="1"
+        fill="white" stroke="none" stroke-width="0"
         d="M 189.23,132.38
            C 189.23,132.38 185.94,133.11 185.94,133.11
              184.61,133.40 183.24,133.68 181.83,133.95
