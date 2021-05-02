@@ -58,7 +58,7 @@ c.style.imageRendering='pixelated';
 //c.style.height='9em';
 //c.style.width='13em';
 const ar=(c.width+c.height)/c.width;
-const margin=0.0;
+const margin=0.05;
 function vhs(){
 	c.height=10;
 	c.width=50;
@@ -75,6 +75,7 @@ function vhs(){
 	}
 	else 
 	{
+		let margin=0;
 		logo.style.marginTop='0';
 		if((window.innerHeight*(1-margin)-window.innerWidth)/window.innerWidth>18/50)
 		{
