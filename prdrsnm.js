@@ -32,7 +32,7 @@ if(box)
 var logo=new Image();
 logo.onerror=(e)=>{console.log(e);abort();}
 //logo.src='jurassic-park-2.svg';
-logo.src="chess.png";
+logo.src="https://pixabay.com/get/gcd80ebd951d0eb302e502218b1d16378016cf3dba3e36c1aea1be36b54ac5a19a3543efc026626072768a41cf1bfd668_640.png";
 //logo.style.boxShadow='0 0 0 2% #F4AAB9';
 //logo.src='1.jpg';
 //logo.style.borderRadius='2%';
