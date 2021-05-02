@@ -15,7 +15,7 @@ document.body.style.textAlign='center';
 var flex=document.createElement('Div');
 flex.style.display='flex';
 flex.style.height='100%';
-flex.style.width='100vmin';
+//flex.style.width='100vmin';
 flex.style.margin='auto';
 flex.style.alignItems='center';
 flex.style.flexDirection='column';
@@ -32,8 +32,8 @@ if(box)
 var logo=new Image();
 logo.onerror=(e)=>{console.log(e);abort();}
 //logo.src='jurassic-park-2.svg';
-logo.src="https://lh3.googleusercontent.com/proxy/SOoGrO-Y286RUXziMA3VERsq_DrjR_fsaJlcU-4sCKTvLw4mfGRRLuF_Q7yjoTSpRSVt-QYdAeq6j69uRsqFC5csRhyKRrw";
-logo.style.boxShadow='0 0 0 2% #F4AAB9';
+logo.src="chess.png";
+//logo.style.boxShadow='0 0 0 2% #F4AAB9';
 //logo.src='1.jpg';
 //logo.style.borderRadius='2%';
 //logo.style.borderStyle='solid';
@@ -53,36 +53,44 @@ logo.innerHTML=`
 c.style.imageRendering='crisp-edges';
 c.style.imageRendering='pixelated';
 c.height=18;
-c.width=26+8+2;
+c.width=26;
 //c.style.height='9em';
 //c.style.width='13em';
 const ar=(c.width+c.height)/c.width;
-c.style.height=Math.ceil(100*c.height/c.width/ar).toString()+'%';
-//c.style.width='100vw';
-c.style.maxHeight=Math.floor(c.height*100/c.width)+'vw';
-//c.style.maxWidth='100vw';
+const chr='0.7';
+function vhs(){
+	let vh = Math.floor(window.innerHeight) * 0.01;
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+vhs();
+window.onresize=vhs;
+//c.style.height=Math.ceil(100*c.height/c.width/ar).toString()+'%';
+logo.style.width='calc( var(--vh,1vh) * '+(chr*100).toString()+' )';
+c.style.width='calc( var(--vh,1vh) * '+Math.floor((1-chr-0.05)*100*c.width/c.height)+' )';
+c.style.width='calc(calc(calc(var(--vh,1vh) * 95) - min(100vw, '+logo.style.width+')) * '+(c.width/c.height).toString()+')';
+//c.style.maxHeight=Math.floor(c.height*100/c.width)+'vw';
+c.style.maxWidth='100vw';
 //c.style.objectFit='contain';
 
 var ld=document.createElement('Div');
 ld.style.flexGrow=1;
 //ld.style.height='calc(99% - min('+c.style.height+','+c.style.maxHeight+'))';
-ld.style.height='calc(99% - '+c.style.height+')';
-ld.style.minHeight='calc(99% - '+c.style.maxHeight+')';
+//ld.style.height='calc(99% - '+c.style.height+')';
+//ld.style.minHeight='calc(99% - '+c.style.maxHeight+')';
 ld.style.display='flex';
 ld.style.alignItems='center';
 ld.style.justifyContent='center';
 ld.style.backgroundColor=color4;
-ld.style.width='100%';
+//ld.style.width='100%';
 ld.style.textAlign='center';
 const logorw=100*(c.width-4)/c.width;
-logo.style.height=(100/ar*logorw/(100-Math.ceil(100*c.height/c.width/ar))).toString()+'%';
+//logo.style.height=(100/ar*logorw/(100-Math.ceil(100*c.height/c.width/ar))).toString()+'%';
 //logo.style.width='50%';
 //logo.style.height='33vh';
-//logo.style.width='100vw';
-logo.style.maxHeight=logorw.toString()+'vw';
+//logo.style.maxHeight=logorw.toString()+'vw';
 logo.style.margin='auto';
 logo.style.display='inline-block';
-//logo.style.maxWidth='50vw';
+logo.style.maxWidth='100vw';
 //logo.style.objectFit='contain';
 
 
