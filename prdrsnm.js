@@ -32,7 +32,7 @@ if(box)
 var logo=new Image();
 logo.onerror=(e)=>{console.log(e);abort();}
 //logo.src='jurassic-park-2.svg';
-logo.src="https://pixabay.com/get/gcd80ebd951d0eb302e502218b1d16378016cf3dba3e36c1aea1be36b54ac5a19a3543efc026626072768a41cf1bfd668_640.png";
+logo.src="https://forums.macrumors.com/attachments/ideal-2d-version-gif.336684/";
 //logo.style.boxShadow='0 0 0 2% #F4AAB9';
 //logo.src='1.jpg';
 //logo.style.borderRadius='2%';
@@ -52,27 +52,40 @@ logo.innerHTML=`
 
 c.style.imageRendering='crisp-edges';
 c.style.imageRendering='pixelated';
-c.height=18;
-c.width=26;
+
+//c.style.backgroundColor='red';
 //c.style.height='9em';
 //c.style.width='13em';
 const ar=(c.width+c.height)/c.width;
 const margin=0.05;
-const chr='0.7';
 function vhs(){
+	c.height=10;
+	c.width=50;
+	c.dr=false;
+	let chr=(1-c.height/(c.height+c.width))*.95;
 	let vh = Math.floor(window.innerHeight) * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 	logo.style.margin='auto';
 	if(window.innerHeight*chr<window.innerWidth)
 		logo.style.marginTop=Math.min((window.innerWidth-window.innerHeight*chr)/2,window.innerHeight*margin/2);
-	else logo.style.marginTop='0';
+	else 
+	{
+		logo.style.marginTop='0';
+		if((window.innerHeight*.95-window.innerWidth)/window.innerWidth>18/50)
+		{
+			c.dr=true;
+			c.height=18;
+			c.width=26;
+		}
+	}
+	logo.style.width='calc( var(--vh,1vh) * '+(chr*100).toString()+' )';
+	c.style.width='calc(calc(calc(var(--vh,1vh) * 95) - min(100vw, '+logo.style.width+')) * '+(c.width/c.height).toString()+')';
+	if(arbdh){if(vkta.vdti)cb(cx);else cb(0);}
 }
 vhs();
 window.onresize=vhs;
 //c.style.height=Math.ceil(100*c.height/c.width/ar).toString()+'%';
-logo.style.width='calc( var(--vh,1vh) * '+(chr*100).toString()+' )';
-c.style.width='calc( var(--vh,1vh) * '+Math.floor((1-chr-margin)*100*c.width/c.height)+' )';
-c.style.width='calc(calc(calc(var(--vh,1vh) * 95) - min(100vw, '+logo.style.width+')) * '+(c.width/c.height).toString()+')';
+//c.style.width='calc( var(--vh,1vh) * '+Math.floor((1-chr-margin)*100*c.width/c.height)+' )';
 //c.style.maxHeight=Math.floor(c.height*100/c.width)+'vw';
 c.style.maxWidth='100vw';
 //c.style.objectFit='contain';
@@ -130,6 +143,18 @@ var cni=0;
 var arbdh=false;
 var ca=[false,false,false,false,false,false];
 var cl=[false,false,false,false,false,false];
+function bxy(i)
+{
+	if(c.dr)
+		return [(i%3)*8,Math.floor(i/3)*8];
+	else
+	{
+		if(i==1)i=3;
+		else if(i==2)i=1;
+		else if(i==3)i=2;
+		return [i*8,0];
+	}
+}
 function cb(n)
 {
 	let ctx=c.getContext("2d");
@@ -137,6 +162,7 @@ function cb(n)
 	const bmp=[[2,2,3,2],[2,2,2,3],[1,2,3,2],[2,2,3,2],[2,1,2,3],[1,2,3,2]];
 	for(let i=0;i<6;i++)
 	{
+		let [bx,by]=bxy(i);
 		let bg=color1,fg=color2;
 		let lg='80';
 		let hg=(256-parseInt(lg)).toString();
@@ -145,18 +171,18 @@ function cb(n)
 		if(cl[i])
 		{
 			ctx.fillStyle='orange';
-			ctx.fillRect(1+(i%3)*8,1+Math.floor(i/3)*8,1,1);
-			ctx.fillRect(8+(i%3)*8,1+Math.floor(i/3)*8,1,1);
-			ctx.fillRect(1+(i%3)*8,8+Math.floor(i/3)*8,1,1);
-			ctx.fillRect(8+(i%3)*8,8+Math.floor(i/3)*8,1,1);
+			ctx.fillRect(1+bx,1+by,1,1);
+			ctx.fillRect(8+bx,1+by,1,1);
+			ctx.fillRect(1+bx,8+by,1,1);
+			ctx.fillRect(8+bx,8+by,1,1);
 		}
 		if(!ca[i])
 		{
 			//console.log(fg,bg);
 			ctx.fillStyle='rgb(128,128,128)';
-			//ctx.fillRect(3+(i%3)*8,3+Math.floor(i/3)*8,4,4);
+			//ctx.fillRect(3+bx,3+by,4,4);
 			//ctx.fillStyle=bg;
-			ctx.fillRect(4+(i%3)*8,4+Math.floor(i/3)*8,2,2);
+			ctx.fillRect(4+bx,4+by,2,2);
 			continue;
 		}
 		if(i+1==n)
@@ -164,23 +190,23 @@ function cb(n)
 			[bg,fg]=[fg,bg];
 			[s1,s2]=[s2,s1];
 			ctx.fillStyle=bg;
-			ctx.fillRect(1+(i%3)*8,1+Math.floor(i/3)*8,8,8);
+			ctx.fillRect(1+bx,1+by,8,8);
 		}
 		ctx.fillStyle=fg;
-		ctx.fillRect(2+(i%3)*8,2+Math.floor(i/3)*8,6,6);
+		ctx.fillRect(2+bx,2+by,6,6);
 		ctx.fillStyle=bg;
 		if(i==0||i==2)
 		{
 			ctx.fillStyle=s1;
-			ctx.fillRect(3+(i%3)*8,4+Math.floor(i/3)*8,4,2);
+			ctx.fillRect(3+bx,4+by,4,2);
 			if(i==2)
-				ctx.fillRect(4+(i%3)*8,3+Math.floor(i/3)*8,2,4);
+				ctx.fillRect(4+bx,3+by,2,4);
 		}
 		else
 		{
-			ctx.fillRect(3+(i%3)*8,3+Math.floor(i/3)*8,4,4);
+			ctx.fillRect(3+bx,3+by,4,4);
 			ctx.fillStyle=s2;
-			ctx.fillRect(2+(i%3)*8+bmp[i][0],2+Math.floor(i/3)*8+bmp[i][1],bmp[i][2],bmp[i][3]);
+			ctx.fillRect(2+bx+bmp[i][0],2+by+bmp[i][1],bmp[i][2],bmp[i][3]);
 		}
 	}
 }
@@ -210,8 +236,11 @@ function cr()
 			let x=(e.clientX-R.left-cx)*c.width/cw;
 			let y=(e.clientY-R.top-cy)*c.height/ch;
 			for(let i=0;i<6;i++)
-				if(x>1+(i%3)*8&&x<9+(i%3)*8&&y>1+Math.floor(i/3)*8&&y<9+Math.floor(i/3)*8)
+			{
+				let [bx,by]=bxy(i)
+				if(x>1+bx&&x<9+bx&&y>1+by&&y<9+by)
 				{return i+1;}
+			}
 			return 0;
 		}
 		/*c.onpointerdown=(e)=>{vkta.t0=Date.now();console.log('down');cx=cp(e);cb(cx);};
