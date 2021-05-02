@@ -33,6 +33,7 @@ var logo=new Image();
 logo.onerror=(e)=>{console.log(e);abort();}
 //logo.src='jurassic-park-2.svg';
 logo.src="https://forums.macrumors.com/attachments/ideal-2d-version-gif.336684/";
+//logo.src='chess.gif';
 //logo.style.boxShadow='0 0 0 2% #F4AAB9';
 //logo.src='1.jpg';
 //logo.style.borderRadius='2%';
@@ -57,7 +58,7 @@ c.style.imageRendering='pixelated';
 //c.style.height='9em';
 //c.style.width='13em';
 const ar=(c.width+c.height)/c.width;
-const margin=0.05;
+const margin=0.0;
 function vhs(){
 	c.height=10;
 	c.width=50;
