@@ -62,24 +62,28 @@ function vhs(){
 	c.height=10;
 	c.width=50;
 	c.dr=false;
-	let chr=(1-c.height/(c.height+c.width))*.95;
+	let chr=(1-c.height/(c.height+c.width))*(1-margin);
 	let vh = Math.floor(window.innerHeight) * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
+	logo.style.width=Math.floor(window.innerHeight*chr).toString();
 	logo.style.margin='auto';
 	if(window.innerHeight*chr<window.innerWidth)
+	{
+		c.style.width=Math.floor(window.innerHeight*(1-margin-chr)*c.width/c.height).toString();
 		logo.style.marginTop=Math.min((window.innerWidth-window.innerHeight*chr)/2,window.innerHeight*margin/2);
+	}
 	else 
 	{
 		logo.style.marginTop='0';
-		if((window.innerHeight*.95-window.innerWidth)/window.innerWidth>18/50)
+		if((window.innerHeight*(1-margin)-window.innerWidth)/window.innerWidth>18/50)
 		{
 			c.dr=true;
 			c.height=18;
 			c.width=26;
 		}
+		c.style.width=Math.floor((window.innerHeight*(1-margin)-window.innerWidth)*c.width/c.height).toString();
 	}
-	logo.style.width='calc( var(--vh,1vh) * '+(chr*100).toString()+' )';
-	c.style.width='calc(calc(calc(var(--vh,1vh) * 95) - min(100vw, '+logo.style.width+')) * '+(c.width/c.height).toString()+')';
+	//c.style.width='calc(calc(calc(var(--vh,1vh) * 95) - min(100vw, '+logo.style.width+')) * '+(c.width/c.height).toString()+')';
 	if(arbdh){if(vkta.vdti)cb(cx);else cb(0);}
 }
 vhs();
