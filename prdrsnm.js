@@ -75,8 +75,10 @@ function vhs(){
 	}
 	else 
 	{
+		console.log('potrait');
 		let margin=0;
 		logo.style.marginTop='0';
+		logo.style.width=Math.floor(window.innerWidth);
 		if((window.innerHeight*(1-margin)-window.innerWidth)/window.innerWidth>18/50)
 		{
 			c.dr=true;
