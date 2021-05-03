@@ -75,7 +75,6 @@ function vhs(){
 	}
 	else 
 	{
-		console.log('potrait');
 		let margin=0;
 		logo.style.marginTop='0';
 		logo.style.width=Math.floor(window.innerWidth);
