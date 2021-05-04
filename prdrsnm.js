@@ -1,3 +1,6 @@
+//var levenshtein = require('js-levenshtein');
+import {lv} from 'https://031323.github.io/lv.js'
+console.log('lv: '+lv('1234','2345'));
 const color1='black'//'#115555',//"#900000",
 const color2='white'//'cornsilk',
 const color3='black'//'#115555'//'#905555';
@@ -60,9 +63,12 @@ c.style.imageRendering='pixelated';
 const ar=(c.width+c.height)/c.width;
 const margin=0.05;
 function vhs(){
+	logo.style.maxWidth='100vw';
+	c.style.maxWidth='100vw';
 	c.height=10;
 	c.width=50;
 	c.dr=false;
+	c.style.margin='auto auto 0px';
 	let chr=(1-c.height/(c.height+c.width))*(1-margin);
 	let vh = Math.floor(window.innerHeight) * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -94,7 +100,7 @@ window.onresize=vhs;
 //c.style.height=Math.ceil(100*c.height/c.width/ar).toString()+'%';
 //c.style.width='calc( var(--vh,1vh) * '+Math.floor((1-chr-margin)*100*c.width/c.height)+' )';
 //c.style.maxHeight=Math.floor(c.height*100/c.width)+'vw';
-c.style.maxWidth='100vw';
+
 //c.style.objectFit='contain';
 
 var ld=document.createElement('Div');
@@ -114,17 +120,17 @@ const logorw=100*(c.width-4)/c.width;
 //logo.style.height='33vh';
 //logo.style.maxHeight=logorw.toString()+'vw';
 logo.style.display='inline-block';
-logo.style.maxWidth='100vw';
 //logo.style.objectFit='contain';
 
 
 logo.onload=()=>
 {
-	flex.appendChild(ld);
+	//flex.appendChild(ld);
 	//var d1=document.createElement('Div');
 	//d1.style.width='10%';
 	//d1.appendChild(logo);
-	ld.appendChild(logo);
+	//ld.appendChild(logo);
+	flex.appendChild(logo);
 	flex.appendChild(c);
 	document.body.appendChild(flex);
 }
@@ -307,17 +313,26 @@ else suvagarmbh(()=>{
 }
 ,abort);
 vkta.krmh=0;
+vkta.prsnkrmh=[];
 vkta.krm=function(x)
 {
 	if(this.suvdti){this.vdti=true;this.nx=x;return;}
 	let krmh=this.vak[this.krmh].split(' ')[x];
 	if(typeof(krmh)==='undefined'){cb(0);return;}
 	let vakym='';
-	if(!parseInt(krmh)||krmh>=this.vak.length)vakym=this.uttrah[x];
+	if(x==6&&krmh==0)
+	{	
+		let purvkrmh=this.prsnkrmh.pop();
+		if(purvkrmh)krmh=purvkrmh;
+	}
+	if(!parseInt(krmh)||krmh>=this.vak.length){
+		vakym=this.uttrah[x];
+	}
 	else
 	{
 		vakym=this.vak[krmh].split(' ')[0]
 		this.krmh=krmh;
+		if(vakym.includes('&'))this.prsnkrmh.push(krmh);
 	}
 	this.suvdti=true;
 	this.vdti=true;
