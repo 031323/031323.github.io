@@ -1,0 +1,64 @@
+<html lang="sa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>031323</title>
+<style>
+a {
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+    color:Black;
+    text-decoration: none;
+    border-style:solid;border-width:.07em;display:inline-block;margin:0.25em;padding:.25em;
+}
+a:hover
+{
+	color:White;
+	background-color:black;
+	border-color:black;
+}
+</style>
+</head>
+<body onload="f1();" style="display:none;overflow-y:scroll;color:white;background-color:white;margin:0;font-size:x-large;">
+
+<div style="word-spacing:-.25em;text-align:center;margin:0.5em 0.5em 0.5em 0.5em;">
+	<svg style="width:2em;max-width:100%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+		<rect  rx="00" ry="00" x="200" width="200" height="300" fill="rgb(125,125,225)" />
+		<rect  rx="00" ry="00" width="200" height="300" fill="rgb(0,0,130)" />
+		<rect  x="100" y="200" width="200" height="100" fill="rgb(0,0,130)" />
+		<rect  x="100" y="000" width="200" height="100" fill="rgb(125,125,225)" />
+		<circ x="200" y="150" r="50" fill="rgb(50,50,50)" />
+	</svg>
+	<div style="margin:0;height:1em;"></div>
+	<p style="white-space:nowrap;margin:0;color:black;" id="p1"></p>
+	<a href="6">काककर्कम्
+	</a>
+	<a href="https://youtu.be/MOliDDr0yYY">दण्डक्रयम्
+	</a>
+</div>
+<script src="app.js"></script>
+<!--<script src="8.js"></script>-->
+<script src="43.js"></script>
+<script>
+
+var E=document.body.offsetWidth;
+window.addEventListener('resize', function(event){
+	if(E!=document.body.offsetWidth)
+	{
+		E=document.body.offsetWidth;
+		f1();
+	}
+});
+function f1()
+{
+	document.body.style.display="";
+	var sp=getTextWidth(' ',css(p1,'font-weight')+" "+css(p1,'font-size')+" "+css(p1,'font-family'));
+	p1.style.textAlign="left";
+	p1.innerHTML=f43(["संस्कृत","म्।","म","अ","धीतवता","।","","अ","थ","।","","","कि","म्।","ङ्क","क","र्तव्यम्?"],p1.offsetWidth-1,0,p1,true)
+		+"<span id=\"p1s1\" style=\"display:inline-block;width:"+sp+"\"></span>";
+	if(p1s1.offsetLeft==p1.offsetLeft)p1s1.style.width="0";
+	p1.innerHTML+=f43(["न","नु।","न्वि","इ","मे","।","","","अध्येतव्ये!"],p1.offsetWidth-1,p1s1.offsetLeft-p1.offsetLeft+p1s1.offsetWidth,p1,true);
+	p1.style.textAlign="center";
+}
+</script>
+</body>
+</html>
