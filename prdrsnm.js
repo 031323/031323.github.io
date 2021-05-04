@@ -1,5 +1,5 @@
 //var levenshtein = require('js-levenshtein');
-import {lv} from 'https://031323.github.io/lv.js'
+//import {lv} from 'https://031323.github.io/lv.js'
 console.log('lv: '+lv('1234','2345'));
 const color1='black'//'#115555',//"#900000",
 const color2='white'//'cornsilk',

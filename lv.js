@@ -1,5 +1,5 @@
 //'use strict';
-export const lv=(function ()
+const lv=(function ()
 {
   function _min(d0, d1, d2, bx, ay)
   {
