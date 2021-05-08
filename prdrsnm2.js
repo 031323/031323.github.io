@@ -41,6 +41,7 @@ ahrta.prtikrm=()=>{
 
 const krmsnkya=8;
 var krmdrsnm=document.createElement('Div');
+krmdrsnm.style.margin='auto';
 krmdrsnm.style.height='15%';
 krmdrsnm.style.width='100%';
 krmdrsnm.style.display='flex';
@@ -54,7 +55,7 @@ for(let i=0;i<krmsnkya;i++)
 {
 	krmankh[i]=new Image();
 	krmankh[i].style.objectFit='contain';
-	krmankh[i].style.borderRadius='10%';
+	krmankh[i].style.borderRadius='calc(var(--iw) * 0.01)';
 	krmankh[i].style.width='9%';
 	krmankh[i].style.marginLeft='1%';
 	krmankh[i].style.height='50%';
@@ -78,6 +79,7 @@ krmdrsnm.appendChild(bk);
 	
 ptlm.appendChild(krmdrsnm);
 var ankah=document.createElement('Div');
+ankah.style.margin='auto';
 ankah.style.height='30%';
 ankah.style.width='100%';
 ankah.style.display='flex';
@@ -92,7 +94,7 @@ for(let i=0;i<10;i++)
 {
 	ankh[i]=new Image();
 	ankh[i].style.objectFit='contain';
-	ankh[i].style.borderRadius='10%';
+	ankh[i].style.borderRadius='calc(var(--iw) * 0.02)';
 	ankh[i].style.width='18%';
 	ankh[i].style.marginLeft='2%';
 	if(i%5==0)ankh[i].style.marginLeft='1%';
@@ -104,10 +106,12 @@ for(let i=0;i<10;i++)
 	ankah.appendChild(ankh[i]);
 }
 var citrm=new Image();
-//citrm.src='1.jpg';
 citrm.style.height='100%';
 citrm.style.width='100%';
 citrm.style.objectFit='cover';
+citrm.style.objectPosition='bottom';
+citrm.style.borderRadius='calc(var(--iw) * 0.01)';
+//ahrta.ahrnm(citrm,'1.jpg');
 //ankah.appendChild(citrm);
 ptlm.appendChild(ankah);
 var suckh=document.createElement('Div');
@@ -123,6 +127,7 @@ suckh.appendChild(srh);
 ptlm.appendChild(suckh);
 var nodnani=document.createElement('Div');
 nodnani.style.height='50%';
+nodnani.style.margin='auto';
 nodnani.style.width='100%';
 nodnani.style.display='flex';
 nodnani.style.flexDirection='row';
@@ -137,7 +142,7 @@ for(let i=0;i<6;i++)
 {
 	nodnm[i]=new Image();
 	nodnm[i].style.objectFit='contain';
-	nodnm[i].style.borderRadius='10%';
+	nodnm[i].style.borderRadius='calc(var(--iw) * 0.02)';
 	nodnm[i].style.width=33.3333*(1-riktih)+'%';
 	nodnm[i].style.height=50*(1-riktih*3/4*3/2)+'%';
 	nodnm[i].style.backgroundColor='white';
@@ -152,8 +157,10 @@ function vhs()
 	let w=480;
 	if(window.innerWidth<w)w=window.innerWidth;
 	if(window.innerHeight<w*4/3)w=Math.floor(window.innerHeight*3/4);
+	w*=.95;
 	ptlm.style.width=w;
 	ptlm.style.height=w*4/3;
+	document.documentElement.style.setProperty('--iw',w+'px');
 }
 vhs();
 window.onresize=vhs;
