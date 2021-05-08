@@ -20,7 +20,7 @@ ptlm.style.maxWidth='100%';
 ptlm.style.maxHeight='100%';
 ptlm.style.backgroundColor='black';'rgb(50,50,50)';
 ptlm.style.textAlign='center';
-
+ptlm.style.opacity=0;
 ahrta={snkya:0,
 	krmnm:function()
 	{
@@ -36,8 +36,8 @@ ahrta={snkya:0,
 	}
 }
 ahrta.prtikrm=()=>{
-	document.body.appendChild(ptlm);
 	console.log('ptlm');
+	ptlm.style.opacity=1;
 }
 
 const krmsnkya=8;
@@ -159,6 +159,7 @@ function vhs()
 vhs();
 window.onresize=vhs;
 
+document.body.appendChild(ptlm);
 
 var arbdh=false;
 var ca=[false,false,false,false,false,false];
@@ -209,6 +210,7 @@ else suvagarmbh(()=>{
 	xhr.send();
 }
 ,abort,(x)=>{srh.style.width=100*x/suvaggaurvm+'%';});
+
 document.body.onclick=()=>{console.log('click');context.resume();}
 
 vkta.krmh=0;
