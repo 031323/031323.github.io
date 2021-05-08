@@ -20,7 +20,6 @@ ptlm.style.maxWidth='100%';
 ptlm.style.maxHeight='100%';
 ptlm.style.backgroundColor='black';'rgb(50,50,50)';
 ptlm.style.textAlign='center';
-ptlm.style.opacity=0;
 ahrta={snkya:0,
 	krmnm:function()
 	{
@@ -37,7 +36,7 @@ ahrta={snkya:0,
 }
 ahrta.prtikrm=()=>{
 	console.log('ptlm');
-	ptlm.style.opacity=1;
+	cr();
 }
 
 const krmsnkya=8;
@@ -161,7 +160,6 @@ window.onresize=vhs;
 
 document.body.appendChild(ptlm);
 
-var arbdh=false;
 var ca=[false,false,false,false,false,false];
 var cl=[false,false,false,false,false,false];
 
@@ -193,7 +191,7 @@ function cr()
 	for(let i=0;i<6;i++)ca[i]=true;
 	cl[5]=true;
 }
-
+ahrta.snkya++;
 var vkta=new Object();
 if(typeof suvagarmbh==="undefined")abort();
 else suvagarmbh(()=>{
@@ -202,7 +200,7 @@ else suvagarmbh(()=>{
 	xhr.onload = function() {
     if (xhr.status === 200) {
     	vkta.vak=xhr.responseText.split('\n');
-    	setTimeout(()=>{arbdh=true;cr();},0);
+    	setTimeout(()=>{ahrta.krmnm();},0);
     }
 		else abort();
 	};
