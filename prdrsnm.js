@@ -1,5 +1,5 @@
 //var levenshtein = require('js-levenshtein');
-import {lv} from './lv.js'
+//import {lv} from './lv.js'
 console.log('lv: '+lv('1234','2345'));
 const color1='black'//'#115555',//"#900000",
 const color2='white'//'cornsilk',
@@ -261,9 +261,21 @@ function cr()
 		c.onpointerout=()=>{cb(0);}
 		c.onpointerup=()=>{console.log('up '+((Date.now()-vkta.t0)/1000).toString());if(cx)vkta.krm(cx);cb(0);}
 		*/
-		c.onpointerup=()=>{context.resume();}
-		c.onpointerout=()=>{context.resume();}
-		c.onpointerdown=(e)=>{if(vkta.vdti)return;cx=cp(e);if(cx){cl[2]=false;cl[5]=false;cb(cx);vkta.krm(cx);}};
+		//c.onpointerup=()=>{context.resume();}
+		//c.onpointerout=()=>{context.resume();}
+		c.onclick=()=>{context.resume();}
+		function krm(){if(cx){cl[2]=false;cl[5]=false;cb(cx);vkta.krm(cx);}}
+		c.onpointerdown=(e)=>{if(vkta.vdti)return;cx=cp(e);krm();};
+		document.body.onkeydown=(e)=>{if(vkta.vdti)return;
+			cx=0;
+			if(e.key=='ArrowLeft')cx=4;
+			if(e.key=='ArrowRight')cx=6;
+			if(e.key=='ArrowDown')cx=5;
+			if(e.key=='ArrowUp')cx=2;
+			if(e.key=='+')cx=3;
+			if(e.key=='-')cx=1;			
+			krm();
+		}
 		for(let i=0;i<6;i++)ca[i]=true;
 		cl[5]=true;
 		//ca[5]=true;
