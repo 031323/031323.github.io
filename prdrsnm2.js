@@ -384,3 +384,5 @@ const ktah=[
 	'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
 	'https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg',
 ];
+if(parseInt(location.hash.substring(1))<=ktah.length&&parseInt(location.hash.substring(1))!=0)
+	ahrta.ahrnm(citrm,ktah[parseInt(location.hash.substring(1))-1]);
