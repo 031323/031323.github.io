@@ -222,8 +222,10 @@ function ktnm()
 	citrm.src=ktah[parseInt(ktanam)-1];
 	ptlm.replaceChild(citrm,ptlm.children[1]);
 }
+var key=[false,false,false,false,false,false,false,false,false,false];
 function cynm()
 {
+	console.log(ktanam);
 	while(ktanam.length+ktah.length.toString().length<krmsnkya)ktanam+='0';
 	for(let i=0;i<10;i++)
 	{
@@ -236,14 +238,15 @@ function cynm()
 	}
 	for(let i=0;i<krmsnkya;i++)
 	{
-		if(!krmankh[i].src.includes(ktanam[i]))
-		{
-			console.log(i);
-			krmankh[i].style.opacity=0;
-		}
 		if(i<ktanam.length){
-			krmankh[i].onload=()=>{krmankh[i].style.opacity=1;}
-			krmankh[i].src='ankah/'+ktanam[i]+'.svg';
+			if(!krmankh[i].src.includes(ktanam[i]))
+			{
+				console.log(i);
+				krmankh[i].style.opacity=0;
+				krmankh[i].onload=()=>{if(krmankh[i].src.includes(ktanam[i]))krmankh[i].style.opacity=1;}
+				krmankh[i].src='ankah/'+ktanam[i]+'.svg';
+			}
+			else krmankh[i].style.opacity=1;
 		}
 		else krmankh[i].style.opacity=0;
 	}
@@ -252,13 +255,17 @@ function cynm()
 }
 function cr()
 {
-	function bkkrm(){ktanam=ktanam.substring(0,ktanam.length-1);cynm();}
+	function bkkrm(){
+		for(let i=0;i<10;i++){key[i]=false;ankout(i);}
+		ktanam=ktanam.substring(0,ktanam.length-1);cynm();
+	}
 	bk.onpointerdown=bkkrm;
 	function ankdown(i){ankh[i].style.filter='invert(1)';}
 	function ankout(i){ankh[i].style.filter='';}
 	function ankkrm(i){ankout(i);if(ankh[i].style.opacity==='1'){ktanam+=i;cynm();}}
 	for(let i=0;i<10;i++)
 	{
+		//ankh[i].onpointerdown=()=>{ankkrm(i);};
 		ankh[i].onpointerdown=()=>{ankdown(i);};
 		ankh[i].onpointerout=()=>{ankout(i);};
 		ankh[i].onclick=()=>{ankkrm(i);};
@@ -283,10 +290,9 @@ function cr()
     e.getModifierState("Alt")
     	)return;
 		for(let i=0;i<10;i++)
-			if(e.key==i)ankkrm(i);
+			if(e.key==i&&key[i]){key[i]=false;ankkrm(i);}
 	}
 	document.body.onkeydown=(e)=>{
-		console.log(e.mod)
 		console.log(e.key+' '+e.code);
 		if (e.getModifierState("Fn") ||
     e.getModifierState("Hyper") ||
@@ -298,7 +304,7 @@ function cr()
     )return;
 		if(e.code=='Backspace')bkkrm();
 		for(let i=0;i<10;i++)
-			if(e.key==i)ankdown(i);
+			if(e.key==i){key[i]=true;ankdown(i);}
 		if(vkta.vdti)return;
 		cx=0;
 		if(e.key=='ArrowLeft')cx=4;
