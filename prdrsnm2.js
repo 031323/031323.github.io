@@ -168,7 +168,8 @@ ptlm.appendChild(nodnani);
 const ptlpurnm=0.93;
 function vhs()
 {
-	let w=480;
+	let w=360;
+	if(window.innerHeight>window.innerWidth)w=window.innerWidth;
 	if(window.innerWidth<w)w=window.innerWidth;
 	if(window.innerHeight<w*4/3)w=Math.floor(window.innerHeight*3/4);
 	w*=ptlpurnm;
