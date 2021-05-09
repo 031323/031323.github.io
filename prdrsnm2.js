@@ -220,7 +220,8 @@ function ktnm()
 	let k=ktanam;
 	citrm.style.opacity=0;
 	citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
-	citrm.src=ktah[parseInt(ktanam)-1];
+	if(ktah[parseInt(ktanam)-1]!=0)
+		citrm.src=ktah[parseInt(ktanam)-1];
 	ptlm.replaceChild(citrm,ptlm.children[1]);
 }
 var key=[false,false,false,false,false,false,false,false,false,false];
@@ -257,7 +258,6 @@ function cynm()
 function cr()
 {
 	function bkkrm(){
-		for(let i=0;i<10;i++){key[i]=false;ankout(i);}
 		ktanam=ktanam.substring(0,ktanam.length-1);cynm();
 	}
 	bk.onpointerdown=bkkrm;
@@ -303,6 +303,8 @@ function cr()
     e.getModifierState("Control") ||
     e.getModifierState("Alt")
     )return;
+    for(let i=0;i<10;i++)
+    	if(key[i]&&e.key!=i){key[i]=false;ankkrm(i);}
 		if(e.code=='Backspace')bkkrm();
 		for(let i=0;i<10;i++)
 			if(e.key==i){key[i]=true;ankdown(i);}
