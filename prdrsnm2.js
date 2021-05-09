@@ -58,6 +58,7 @@ for(let i=0;i<krmsnkya;i++)
 	krmankh[i].style.borderRadius='calc(var(--iw) * 0.01)';
 	krmankh[i].style.width='9%';
 	krmankh[i].style.marginLeft='1%';
+	//if(i==0)krmankh[i].style.marginLeft=(1+10*(8-krmsnkya))+'%';
 	krmankh[i].style.height='50%';
 	krmankh[i].style.backgroundColor='white';
 	//krmankh[i].style.boxShadow='0 0 5px 5px gray';
@@ -68,10 +69,11 @@ for(let i=0;i<krmsnkya;i++)
 var	bk=new Image();
 bk.style.objectFit='contain';
 bk.style.margin='auto';
-bk.style.marginRight=0;
-bk.style.borderRadius='0%';
-bk.style.width='18%';
-bk.style.height='60%';
+//bk.style.marginRight=0;
+bk.style.marginLeft=0;
+//bk.style.borderRadius='0%';
+bk.style.width='20%';
+bk.style.height='100%';
 bk.style.filter='invert(1)';
 bk.style.backgroundColor='white';
 ahrta.ahrnm(bk,'ankah/bk.svg');
@@ -106,45 +108,56 @@ for(let i=0;i<10;i++)
 	ankah.appendChild(ankh[i]);
 }
 var citrm=new Image();
-citrm.style.height='100%';
+citrm.style.height='30%';
 citrm.style.width='100%';
 citrm.style.objectFit='cover';
-citrm.style.objectPosition='bottom';
-citrm.style.borderRadius='calc(var(--iw) * 0.01)';
+citrm.style.objectPosition='center';
+citrm.style.backgroundColor='white';
+citrm.style.borderRadius='calc(var(--iw) * 0.02)';
 //ahrta.ahrnm(citrm,'1.jpg');
+//citrm.onload=()=>{ptlm.replaceChild(citrm,ankah)};
+//citrm.src='https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg';
 //ankah.appendChild(citrm);
 ptlm.appendChild(ankah);
 var suckh=document.createElement('Div');
-suckh.style.marginTop='0%';
-suckh.style.height='1.5%';
+suckh.style.marginTop=(1*4/3)+'%';
+suckh.style.height='2%';
+suckh.style.marginBottom=2*4/3+'%';
 suckh.style.width='100%';
 suckh.style.backgroundColor='gray';
+suckh.style.borderRadius='calc(var(--iw) * 0.02)';
 var srh=document.createElement('Div');
 srh.style.height='100%';
 srh.style.width='0%';
 srh.style.backgroundColor='white';
+srh.style.borderRadius='calc(var(--iw) * 0.02)';
 suckh.appendChild(srh);
 ptlm.appendChild(suckh);
 var nodnani=document.createElement('Div');
-nodnani.style.height='50%';
+const nodnvistarh=1;
+nodnani.style.height=50*nodnvistarh+'%';
 nodnani.style.margin='auto';
-nodnani.style.width='100%';
-nodnani.style.display='flex';
+nodnani.style.width=100*nodnvistarh+'%';
+//nodnani.style.display='flex';
 nodnani.style.flexDirection='row';
 nodnani.style.flexWrap='wrap';
-nodnani.style.justifyContent='space-evenly';
-nodnani.style.alignContent='space-evenly'
+nodnani.style.justifyContent='flex-start';
+nodnani.style.alignContent='flex-start';
 nodnani.style.opacity='0';
 const nudynamani=['Iminus.svg','Iup.svg','Iplus.svg','Ileft.svg','Idown.svg','Iright.svg'];
 var nodnm=[]
-const riktih=0.2;
+const riktih=4;
 for(let i=0;i<6;i++)
 {
 	nodnm[i]=new Image();
 	nodnm[i].style.objectFit='contain';
 	nodnm[i].style.borderRadius='calc(var(--iw) * 0.02)';
-	nodnm[i].style.width=33.3333*(1-riktih)+'%';
-	nodnm[i].style.height=50*(1-riktih*3/4*3/2)+'%';
+	nodnm[i].margin='auto';
+	if(i!=0&&i!=3)nodnm[i].style.marginLeft=riktih+'%';
+	if(i/3>=1)nodnm[i].style.marginTop=riktih+'%';
+	else nodnm[i].style.marginTop=2*2/3+'%';
+	nodnm[i].style.width=(33.3333-riktih*2/3)+'%';
+	nodnm[i].style.height=(49-riktih*3/2*1/2)+'%';
 	nodnm[i].style.backgroundColor='white';
 	//nodnm[i].style.boxShadow='0px 0px 0px 5px black';
 	//nodnm[i].style.filter='invert(1)'
@@ -152,14 +165,16 @@ for(let i=0;i<6;i++)
 	nodnani.appendChild(nodnm[i]);
 }
 ptlm.appendChild(nodnani);
+const ptlpurnm=0.93;
 function vhs()
 {
 	let w=480;
 	if(window.innerWidth<w)w=window.innerWidth;
 	if(window.innerHeight<w*4/3)w=Math.floor(window.innerHeight*3/4);
-	w*=.95;
+	w*=ptlpurnm;
 	ptlm.style.width=w;
 	ptlm.style.height=w*4/3;
+	ptlm.style.paddingTop=w*(1-ptlpurnm)*(4/3-1);
 	document.documentElement.style.setProperty('--iw',w+'px');
 }
 vhs();
@@ -176,16 +191,107 @@ function cb()
 {
 	nodnm[cx-1].style.filter='';
 }
+var ktanam='';
+var svprivrtnm=false;
+function hash()
+{
+	if(svprivrtnm){svprivrtnm=false;return;}
+	console.log('hash');
+	let ktakrmh=parseInt(location.hash.substring(1));
+	if(!(ktakrmh<=ktah.length)||ktakrmh==0){
+	cynm();}
+	else {
+		ktanam=ktakrmh.toString();
+		while(ktanam.length<krmsnkya)ktanam='0'+ktanam;
+		cynm();
+	}
+}
+function ktnm()
+{
+	svprivrtnm=true;
+	location.hash=parseInt(ktanam);
+	let k=ktanam;
+	citrm.style.opacity=0;
+	citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
+	citrm.src=ktah[parseInt(ktanam)-1];
+	ptlm.replaceChild(citrm,ptlm.children[1]);
+}
+function cynm()
+{
+	while(ktanam.length+ktah.length.toString().length<krmsnkya)ktanam+='0';
+	for(let i=0;i<10;i++)
+	{
+		ankh[i].style.opacity=0;
+		if(ktanam.length<krmsnkya)
+		{
+			let nyunh=parseInt(ktanam+i)*Math.pow(10,krmsnkya-ktanam.length-1);
+			if(!(nyunh==0&&ktanam.length+1==krmsnkya)&&nyunh<=ktah.length)ankh[i].style.opacity=1;
+		}
+	}
+	for(let i=0;i<krmsnkya;i++)
+	{
+		if(!krmankh[i].src.includes(ktanam[i]))
+		{
+			console.log(i);
+			krmankh[i].style.opacity=0;
+		}
+		if(i<ktanam.length){
+			krmankh[i].onload=()=>{krmankh[i].style.opacity=1;}
+			krmankh[i].src='ankah/'+ktanam[i]+'.svg';
+		}
+		else krmankh[i].style.opacity=0;
+	}
+	ptlm.replaceChild(ankah,ptlm.children[1]);
+	if(ktanam.length==krmsnkya)ktnm();
+}
 function cr()
 {
+	function bkkrm(){ktanam=ktanam.substring(0,ktanam.length-1);cynm();}
+	bk.onpointerdown=bkkrm;
+	function ankdown(i){ankh[i].style.filter='invert(1)';}
+	function ankout(i){ankh[i].style.filter='';}
+	function ankkrm(i){ankout(i);if(ankh[i].style.opacity==='1'){ktanam+=i;cynm();}}
+	for(let i=0;i<10;i++)
+	{
+		ankh[i].onpointerdown=()=>{ankdown(i);};
+		ankh[i].onpointerout=()=>{ankout(i);};
+		ankh[i].onclick=()=>{ankkrm(i);};
+	}
 	suckh.style.opacity=0;
+	hash();
+	window.onhashchange=hash;
 	krmdrsnm.style.opacity=1;
 	ankah.style.opacity=1;
 	nodnani.style.opacity=1;
 	function krm(){if(cx){cl[2]=false;cl[5]=false;nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
 	for(let i=0;i<6;i++)
 		nodnm[i].onpointerdown=(e)=>{if(vkta.vdti)return;cx=i+1;krm();};
-	document.body.onkeydown=(e)=>{if(vkta.vdti)return;
+	document.body.onkeyup=(e)=>
+	{
+		if (e.getModifierState("Fn") ||
+    e.getModifierState("Hyper") ||
+    e.getModifierState("OS") ||
+    e.getModifierState("Super") ||
+    e.getModifierState("Win") /* hack for IE */ ||
+    e.getModifierState("Control")
+    	)return;
+		for(let i=0;i<10;i++)
+			if(e.key==i)ankkrm(i);
+	}
+	document.body.onkeydown=(e)=>{
+		console.log(e.mod)
+		console.log(e.key+' '+e.code);
+		if (e.getModifierState("Fn") ||
+    e.getModifierState("Hyper") ||
+    e.getModifierState("OS") ||
+    e.getModifierState("Super") ||
+    e.getModifierState("Win") /* hack for IE */ ||
+    e.getModifierState("Control")
+    )return;
+		if(e.code=='Backspace')bkkrm();
+		for(let i=0;i<10;i++)
+			if(e.key==i)ankdown(i);
+		if(vkta.vdti)return;
 		cx=0;
 		if(e.key=='ArrowLeft')cx=4;
 		if(e.key=='ArrowRight')cx=6;
@@ -243,13 +349,17 @@ vkta.krm=function(x)
 	this.suvdti=true;
 	this.vdti=true;
 	if(x==6)
-		suvacnarmbh(vakym,(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0)*1000);},
+		suvacnarmbh(vakym,(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0.1)*1000);},
 			()=>{this.suvdti=false;if(this.nx){this.krm(this.nx);this.nx=0;}});
 	else
 		suvacnarmbh(this.prsnah[x],()=>{},()=>{
-		suvacnarmbh(vakym,(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0)*1000);},
+		suvacnarmbh(vakym,(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0.1)*1000);},
 			()=>{this.suvdti=false;if(this.nx){this.krm(this.nx);this.nx=0;}});
 		});
 }
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
+const ktah=[
+	'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
+	'https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg',
+];
