@@ -199,12 +199,15 @@ function hash()
 	console.log('hash');
 	let ktakrmh=parseInt(location.hash.substring(1));
 	if(!(ktakrmh<=ktah.length)||ktakrmh==0){
-	cynm();}
-	else {
+		ktanam='';
+	}
+	else if(!(ktanam.length==krmsnkya&&parseInt(ktanam)==ktakrmh))
+	{
 		ktanam=ktakrmh.toString();
 		while(ktanam.length<krmsnkya)ktanam='0'+ktanam;
 		cynm();
 	}
+	if(ktanam==='')cynm();
 }
 function ktnm()
 {
