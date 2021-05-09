@@ -208,8 +208,11 @@ function hash()
 }
 function ktnm()
 {
-	svprivrtnm=true;
-	location.hash=parseInt(ktanam);
+	if(!(location.hash==='#'+parseInt(ktanam)))
+	{
+		svprivrtnm=true;
+		location.hash=parseInt(ktanam);
+	}
 	let k=ktanam;
 	citrm.style.opacity=0;
 	citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
@@ -273,7 +276,8 @@ function cr()
     e.getModifierState("OS") ||
     e.getModifierState("Super") ||
     e.getModifierState("Win") /* hack for IE */ ||
-    e.getModifierState("Control")
+    e.getModifierState("Control") ||
+    e.getModifierState("Alt")
     	)return;
 		for(let i=0;i<10;i++)
 			if(e.key==i)ankkrm(i);
@@ -286,7 +290,8 @@ function cr()
     e.getModifierState("OS") ||
     e.getModifierState("Super") ||
     e.getModifierState("Win") /* hack for IE */ ||
-    e.getModifierState("Control")
+    e.getModifierState("Control") ||
+    e.getModifierState("Alt")
     )return;
 		if(e.code=='Backspace')bkkrm();
 		for(let i=0;i<10;i++)
