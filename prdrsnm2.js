@@ -240,11 +240,11 @@ function cynm()
 	for(let i=0;i<krmsnkya;i++)
 	{
 		if(i<ktanam.length){
-			if(!krmankh[i].src.includes(ktanam[i]))
+			if(krmankh[i].src[krmankh[i].src.length-5]!=ktanam[i])
 			{
 				console.log(i);
 				krmankh[i].style.opacity=0;
-				krmankh[i].onload=()=>{if(krmankh[i].src.includes(ktanam[i]))krmankh[i].style.opacity=1;}
+				krmankh[i].onload=()=>{if(krmankh[i].src[krmankh[i].src.length-5]==ktanam[i])krmankh[i].style.opacity=1;}
 				krmankh[i].src='ankah/'+ktanam[i]+'.svg';
 			}
 			else krmankh[i].style.opacity=1;
