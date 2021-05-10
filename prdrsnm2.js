@@ -425,7 +425,8 @@ vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्म�
 const ktah=[
 	//'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
 	//'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
-	'https://source.unsplash.com/2pSK9oOgCmQ/500x200',
+	//'https://source.unsplash.com/2pSK9oOgCmQ/500x200',
+	'https://www.publicdomainpictures.net/pictures/390000/nahled/tiger-malerei-kunst-alt.jpg',
 ];
 var arbdh=false;
 hash();
