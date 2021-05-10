@@ -268,6 +268,19 @@ function cynm()
 	ptlm.replaceChild(ankah,ptlm.children[2]);
 	if(ktanam.length==krmsnkya)ktnm();
 }
+function vrttih()
+{
+	if(vkta.vdti&&cx==6&&!vkta.anvrtm)
+	{
+		vkta.anvrtm=true;
+		nodnm[5].style.boxShadow='0 0 0px calc(var(--iw) * 0.02) black';
+	}
+}
+function nivrttih()
+{
+	if(vkta.anvrtm)nodnm[5].style.boxShadow='';
+	vkta.anvrtm=false;
+}
 function cr()
 {
 	window.onhashchange=hash;
@@ -294,7 +307,10 @@ function cr()
 	citrm.style.opacity=1;
 	function krm(){if(cx){cl[2]=false;cl[5]=false;nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
 	for(let i=0;i<6;i++)
-		nodnm[i].onpointerdown=(e)=>{if(vkta.vdti)return;cx=i+1;krm();};
+		nodnm[i].onpointerdown=(e)=>{
+			if(i==5&&vkta.vdti&&cx==6&&!vkta.anvrtm){tyktvym=true;vrttih();}
+			if(vkta.vdti)return;cx=i+1;krm();
+		};
 	document.body.onkeyup=(e)=>
 	{
 		if (e.getModifierState("Fn") ||
@@ -323,6 +339,8 @@ function cr()
 		if(e.code=='Backspace')bkkrm();
 		for(let i=0;i<10;i++)
 			if(e.key==i){key[i]=true;ankdown(i);}
+		if(e.key=='ArrowRight'&&vkta.vdti&&cx==6&&!vkta.anvrtm)vrttih();
+		else nivrttih();
 		if(vkta.vdti)return;
 		cx=0;
 		if(e.key=='ArrowLeft')cx=4;
@@ -354,7 +372,9 @@ else suvagarmbh(()=>{
 }
 ,abort,(x)=>{srh.style.width=100*x/suvaggaurvm+'%';});
 
+var tyktvym=false;
 document.body.onclick=()=>{console.log('click');context.resume();}
+document.body.onpointerdown=()=>{if(tyktvym)tyktvym=false;else nivrttih();}
 
 vkta.krmh=0;
 vkta.prsnkrmh=[];
@@ -370,6 +390,7 @@ vkta.krm=function(x)
 		if(purvkrmh)krmh=purvkrmh;
 	}
 	if(!parseInt(krmh)||krmh>=this.vak.length){
+		//nivrttih();
 		vakym=this.uttrah[x];
 	}
 	else
@@ -386,8 +407,12 @@ vkta.krm=function(x)
 	let vacnm=()=>{
 		if(bagkrmh<bagah.length-1)
 			suvacnarmbh(bagah[bagkrmh],()=>{},vacnm);
-		else suvacnarmbh(bagah[bagkrmh],(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0.1)*1000);},
-			()=>{this.suvdti=false;if(this.nx){this.krm(this.nx);this.nx=0;}});
+		else suvacnarmbh(bagah[bagkrmh],
+			(k)=>{setTimeout(()=>{if(!this.anvrtm){this.vdti=false;cb();}else this.nx=x;},Math.max(k-0.6,0.5)*1000);},
+			()=>{
+				this.suvdti=false;
+				if(this.nx){this.krm(this.nx);this.nx=0;};
+			});
 		bagkrmh++;
 	}
 	vacnm();
