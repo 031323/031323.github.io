@@ -378,23 +378,26 @@ vkta.krm=function(x)
 		this.krmh=krmh;
 		if(vakym.includes('&'))this.prsnkrmh.push(krmh);
 	}
+	if(x!=6)vakym=this.prsnah[x]+','+vakym;
 	this.suvdti=true;
 	this.vdti=true;
-	if(x==6)
-		suvacnarmbh(vakym,(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0.1)*1000);},
+	let bagkrmh=0;
+	let bagah=vakym.split(',');
+	let vacnm=()=>{
+		if(bagkrmh<bagah.length-1)
+			suvacnarmbh(bagah[bagkrmh],()=>{},vacnm);
+		else suvacnarmbh(bagah[bagkrmh],(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0.1)*1000);},
 			()=>{this.suvdti=false;if(this.nx){this.krm(this.nx);this.nx=0;}});
-	else
-		suvacnarmbh(this.prsnah[x],()=>{},()=>{
-		suvacnarmbh(vakym,(k)=>{setTimeout(()=>{this.vdti=false;cb();},Math.max(k-0.6,0.1)*1000);},
-			()=>{this.suvdti=false;if(this.nx){this.krm(this.nx);this.nx=0;}});
-		});
+		bagkrmh++;
+	}
+	vacnm();
 }
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
 const ktah=[
 	'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
-	'https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg',
 ];
+vkta.anvrtm=false;
 var arbdh=false;
 hash();
 var nvhash=false;
