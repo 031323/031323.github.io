@@ -432,12 +432,12 @@ vkta.krm=function(x)
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
 const ktah=[
-	//'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
+	'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
 	//'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
 	//'https://source.unsplash.com/2pSK9oOgCmQ/500x200',
 	//'https://www.publicdomainpictures.net/pictures/390000/nahled/tiger-malerei-kunst-alt.jpg',
 	//['https://images.assettype.com/freepressjournal%2F2020-04%2Ff5dc88ed-ad80-4ba9-bdd1-507c78ad5dec%2F_27DEC19BLSONI_SULTAN_01.jpg?rect=0%2C38%2C1540%2C866&w=500','citrm.style.filter="brightness(2)"'],
-	['https://thumbs-prod.si-cdn.com/WAFsoVKzLtcUGiK-GuDTMExXtuQ=/fit-in/1600x0/https://public-media.si-cdn.com/filer/20130731112159tiger-470x251.jpg','citrm.style.filter=""']
+	//['https://thumbs-prod.si-cdn.com/WAFsoVKzLtcUGiK-GuDTMExXtuQ=/fit-in/1600x0/https://public-media.si-cdn.com/filer/20130731112159tiger-470x251.jpg','citrm.style.filter=""']
 ];
 var arbdh=false;
 hash();
