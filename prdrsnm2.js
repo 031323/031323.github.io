@@ -186,8 +186,6 @@ window.onresize=vhs;
 
 document.body.appendChild(ptlm);
 
-var ca=[false,false,false,false,false,false];
-var cl=[false,false,false,false,false,false];
 
 
 var cx=0;
@@ -230,6 +228,8 @@ function ktnm()
 		citrm.src=ktah[parseInt(ktanam)-1];
 	}
 	else {ahrta.ahrnm(citrm,ktah[parseInt(ktanam)-1]);}
+	//if(citrm.src.includes('EiGBmms-alk'))citrm.style.objectPosition='bottom';
+	//else citrm.style.objectPosition='center';
 	ptlm.replaceChild(citrm,ptlm.children[2]);
 }
 var key=[false,false,false,false,false,false,false,false,false,false];
@@ -305,7 +305,7 @@ function cr()
 	ankah.style.opacity=1;
 	nodnani.style.opacity=1;
 	citrm.style.opacity=1;
-	function krm(){if(cx){cl[2]=false;cl[5]=false;nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
+	function krm(){if(cx){nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
 	for(let i=0;i<6;i++)
 		nodnm[i].onpointerdown=(e)=>{
 			if(i==5&&vkta.vdti&&cx==6&&!vkta.anvrtm){tyktvym=true;vrttih();}
@@ -336,7 +336,7 @@ function cr()
     )return;
     for(let i=0;i<10;i++)
     	if(key[i]&&e.key!=i){key[i]=false;ankkrm(i);}
-		if(e.code=='Backspace')bkkrm();
+		if(e.code=='Backspace'||e.code=='Delete'||e.code=='Escape')bkkrm();
 		for(let i=0;i<10;i++)
 			if(e.key==i){key[i]=true;ankdown(i);}
 		if(e.key=='ArrowRight'&&vkta.vdti&&cx==6&&!vkta.anvrtm)vrttih();
@@ -351,8 +351,6 @@ function cr()
 		if(e.key=='-')cx=1;			
 		krm();
 	}
-	for(let i=0;i<6;i++)ca[i]=true;
-	cl[5]=true;
 }
 ahrta.snkya++;
 var vkta=new Object();
@@ -378,6 +376,7 @@ document.body.onpointerdown=()=>{if(tyktvym)tyktvym=false;else nivrttih();}
 
 vkta.krmh=0;
 vkta.prsnkrmh=[];
+vkta.anvrtm=false;
 vkta.krm=function(x)
 {
 	if(this.suvdti){this.vdti=true;this.nx=x;return;}
@@ -390,7 +389,7 @@ vkta.krm=function(x)
 		if(purvkrmh)krmh=purvkrmh;
 	}
 	if(!parseInt(krmh)||krmh>=this.vak.length){
-		//nivrttih();
+		nivrttih();
 		vakym=this.uttrah[x];
 	}
 	else
@@ -420,10 +419,9 @@ vkta.krm=function(x)
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
 const ktah=[
-	'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
+	//'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
 	'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
 ];
-vkta.anvrtm=false;
 var arbdh=false;
 hash();
 var nvhash=false;
