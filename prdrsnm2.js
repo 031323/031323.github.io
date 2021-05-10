@@ -79,7 +79,6 @@ for(let i=0;i<krmsnkya;i++)
 	krmankh[i].style.backgroundColor='white';
 	//krmankh[i].style.boxShadow='0 0 5px 5px gray';
 	//krmankh[i].style.filter='invert(1)';
-	ahrta.ahrnm(krmankh[i],'ankah/'+Math.floor((i+1)/8).toString()+'.svg');
 	krmdrsnm.appendChild(krmankh[i]);
 }
 var	bk=new Image();
@@ -130,6 +129,7 @@ citrm.style.objectFit='cover';
 citrm.style.objectPosition='center';
 citrm.style.backgroundColor='white';
 citrm.style.borderRadius='calc(var(--iw) * 0.02)';
+citrm.style.opacity=0;
 //ahrta.ahrnm(citrm,'1.jpg');
 //citrm.onload=()=>{ptlm.replaceChild(citrm,ankah)};
 //citrm.src='https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg';
@@ -221,16 +221,15 @@ function ktnm()
 		location.hash=parseInt(ktanam);
 	}
 	let k=ktanam;
-	if(!purvahrnm)
+	if(ktah[parseInt(ktanam)-1]==0)return;
+	if(arbdh)
 	{
 		citrm.style.opacity=0;
 		citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
-	//citrm.onerror=()=>{if(ktanam==k)citrm.src=ktah[parseInt(ktanam)-1];}
 		citrm.onerror=()=>{setTimeout(()=>{if(ktanam==k)citrm.src=ktah[parseInt(ktanam)-1];},2000)};
-		if(ktah[parseInt(ktanam)-1]!=0)
-			citrm.src=ktah[parseInt(ktanam)-1];
+		citrm.src=ktah[parseInt(ktanam)-1];
 	}
-	else {citrm.style.opacity=1;purvahrnm=false;}
+	else {ahrta.ahrnm(citrm,ktah[parseInt(ktanam)-1]);}
 	ptlm.replaceChild(citrm,ptlm.children[2]);
 }
 var key=[false,false,false,false,false,false,false,false,false,false];
@@ -253,10 +252,14 @@ function cynm()
 			if(krmankh[i].src[krmankh[i].src.length-5]!=ktanam[i])
 			{
 				console.log(i);
-				krmankh[i].style.opacity=0;
-				krmankh[i].onload=()=>{if(krmankh[i].src[krmankh[i].src.length-5]==ktanam[i])krmankh[i].style.opacity=1;}
-				krmankh[i].onerror=abort;
-				krmankh[i].src='ankah/'+ktanam[i]+'.svg';
+				if(arbdh)
+				{
+					krmankh[i].style.opacity=0;
+					krmankh[i].onload=()=>{if(krmankh[i].src[krmankh[i].src.length-5]==ktanam[i])krmankh[i].style.opacity=1;}
+					krmankh[i].onerror=abort;
+					krmankh[i].src='ankah/'+ktanam[i]+'.svg';
+				}
+				else ahrta.ahrnm(krmankh[i],'ankah/'+ktanam[i]+'.svg');
 			}
 			else krmankh[i].style.opacity=1;
 		}
@@ -267,6 +270,9 @@ function cynm()
 }
 function cr()
 {
+	window.onhashchange=hash;
+	arbdh=true;
+	if(nvhash)hash();
 	function bkkrm(){
 		ktanam=ktanam.substring(0,ktanam.length-1);cynm();
 	}
@@ -282,11 +288,10 @@ function cr()
 		ankh[i].onclick=()=>{ankkrm(i);};
 	}
 	suckh.style.opacity=0;
-	hash();
-	window.onhashchange=hash;
 	krmdrsnm.style.opacity=1;
 	ankah.style.opacity=1;
 	nodnani.style.opacity=1;
+	citrm.style.opacity=1;
 	function krm(){if(cx){cl[2]=false;cl[5]=false;nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
 	for(let i=0;i<6;i++)
 		nodnm[i].onpointerdown=(e)=>{if(vkta.vdti)return;cx=i+1;krm();};
@@ -390,9 +395,7 @@ const ktah=[
 	'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
 	'https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg',
 ];
-var purvahrnm=false;
-if(parseInt(location.hash.substring(1))<=ktah.length&&parseInt(location.hash.substring(1))!=0)
-{
-	ahrta.ahrnm(citrm,ktah[parseInt(location.hash.substring(1))-1]);
-	purvahrnm=true;
-}
+var arbdh=false;
+hash();
+var nvhash=false;
+window.onhashchange=()=>{nvhash=true;};
