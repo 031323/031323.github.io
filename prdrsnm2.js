@@ -213,21 +213,30 @@ function hash()
 }
 function ktnm()
 {
-	if(!(location.hash==='#'+parseInt(ktanam)))
+	let ktakrmankh=parseInt(ktanam);
+	if(!(location.hash==='#'+ktakrmankh))
 	{
 		svprivrtnm=true;
-		location.hash=parseInt(ktanam);
+		location.hash=ktakrmankh;
 	}
 	let k=ktanam;
-	if(ktah[parseInt(ktanam)-1]==0)return;
+	if(ktah[ktakrmankh-1]==0)return;
+	let src='';
+	if(typeof(ktah[ktakrmankh-1])=='string')src=ktah[ktakrmankh-1];
+	else
+	{
+		src=ktah[ktakrmankh-1][0];
+		eval(ktah[ktakrmankh-1][1]);
+	}
+	
 	if(arbdh)
 	{
 		citrm.style.opacity=0;
 		citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
 		citrm.onerror=()=>{setTimeout(()=>{if(ktanam==k)citrm.src=ktah[parseInt(ktanam)-1];},2000)};
-		citrm.src=ktah[parseInt(ktanam)-1];
+		citrm.src=src;
 	}
-	else {ahrta.ahrnm(citrm,ktah[parseInt(ktanam)-1]);}
+	else {ahrta.ahrnm(citrm,src);}
 	//if(citrm.src.includes('EiGBmms-alk'))citrm.style.objectPosition='bottom';
 	//else citrm.style.objectPosition='center';
 	ptlm.replaceChild(citrm,ptlm.children[2]);
@@ -426,7 +435,9 @@ const ktah=[
 	//'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
 	//'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
 	//'https://source.unsplash.com/2pSK9oOgCmQ/500x200',
-	'https://www.publicdomainpictures.net/pictures/390000/nahled/tiger-malerei-kunst-alt.jpg',
+	//'https://www.publicdomainpictures.net/pictures/390000/nahled/tiger-malerei-kunst-alt.jpg',
+	//['https://images.assettype.com/freepressjournal%2F2020-04%2Ff5dc88ed-ad80-4ba9-bdd1-507c78ad5dec%2F_27DEC19BLSONI_SULTAN_01.jpg?rect=0%2C38%2C1540%2C866&w=500','citrm.style.filter="brightness(2)"'],
+	['https://thumbs-prod.si-cdn.com/WAFsoVKzLtcUGiK-GuDTMExXtuQ=/fit-in/1600x0/https://public-media.si-cdn.com/filer/20130731112159tiger-470x251.jpg','citrm.style.filter=""']
 ];
 var arbdh=false;
 hash();
