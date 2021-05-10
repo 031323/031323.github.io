@@ -380,7 +380,7 @@ vkta.anvrtm=false;
 vkta.krm=function(x)
 {
 	if(this.suvdti){this.vdti=true;this.nx=x;return;}
-	let krmh=this.vak[this.krmh].split(' ')[x];
+	let krmh=parseInt(this.vak[this.krmh].split(' ')[x]);
 	if(typeof(krmh)==='undefined'){cb();return;}
 	let vakym='';
 	if(x==6&&krmh==0)
@@ -388,7 +388,7 @@ vkta.krm=function(x)
 		let purvkrmh=this.prsnkrmh.pop();
 		if(purvkrmh)krmh=purvkrmh;
 	}
-	if(!parseInt(krmh)||krmh>=this.vak.length){
+	if(krmh==0||krmh>=this.vak.length){
 		nivrttih();
 		vakym=this.uttrah[x];
 	}
@@ -407,7 +407,11 @@ vkta.krm=function(x)
 		if(bagkrmh<bagah.length-1)
 			suvacnarmbh(bagah[bagkrmh],()=>{},vacnm);
 		else suvacnarmbh(bagah[bagkrmh],
-			(k)=>{setTimeout(()=>{if(!this.anvrtm){this.vdti=false;cb();}else this.nx=x;},Math.max(k-0.6,0.5)*1000);},
+			(k)=>{setTimeout(()=>{
+				if(!this.anvrtm){this.vdti=false;cb();}
+				else if(krmh==0){this.vdti=false;cb();nivrttih();}
+				else this.nx=x;
+				},Math.max(k-0.6,0.5)*1000);},
 			()=>{
 				this.suvdti=false;
 				if(this.nx){this.krm(this.nx);this.nx=0;};
@@ -420,7 +424,8 @@ vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते'
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
 const ktah=[
 	//'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg',
-	'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
+	//'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
+	'https://source.unsplash.com/2pSK9oOgCmQ/500x200',
 ];
 var arbdh=false;
 hash();
