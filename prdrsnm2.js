@@ -289,6 +289,12 @@ function nivrttih()
 {
 	if(vkta.anvrtm)nodnm[5].style.boxShadow='';
 	vkta.anvrtm=false;
+	if(vkta.nx)
+	{
+		vkta.nx=0;
+		vkta.vdti=false;
+		cb();
+	}
 }
 function cr()
 {
