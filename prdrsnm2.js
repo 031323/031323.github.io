@@ -200,6 +200,7 @@ function hash()
 	if(svprivrtnm){svprivrtnm=false;return;}
 	console.log('hash');
 	let ktakrmh=parseInt(location.hash.substring(1));
+	if(ktah.length==1)ktakrmh=1;
 	if(!(ktakrmh<=ktah.length)||ktakrmh==0){
 		ktanam='';
 	}
