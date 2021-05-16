@@ -94,24 +94,29 @@ krmdrsnm.style.alignItems='center';
 krmdrsnm.style.backgroundColor='black';
 krmdrsnm.style.opacity='0';
 
-var krmankh=new Object();
-for(let i=0;i<krmsnkya;i++)
+function krmankah(snkya)
 {
-	krmankh[i]=[];
-	for(let j=0;j<10;j++)
+	krmankh=new Object();
+	for(let i=0;i<snkya;i++)
 	{
-		krmankh[i][j]=new Image();
-		krmankh[i][j].style.objectFit='contain';
-		krmankh[i][j].style.borderRadius='calc(var(--iw) * 0.01)';
-		krmankh[i][j].style.width='9%';
-		krmankh[i][j].style.marginLeft='1%';
-		//if(i==0)krmankh[i].style.marginLeft=(1+10*(8-krmsnkya))+'%';
-		krmankh[i][j].style.height='50%';
-		krmankh[i][j].style.backgroundColor='white';
-		ahrta.ahrnm(krmankh[i][j],'ankah/'+j.toString()+'.svg');
-		if(j==0)krmdrsnm.appendChild(krmankh[i][j]);
+		krmankh[i]=[];
+		for(let j=0;j<10;j++)
+		{
+			krmankh[i][j]=new Image();
+			krmankh[i][j].style.objectFit='contain';
+			krmankh[i][j].style.borderRadius='calc(var(--iw) * 0.01)';
+			krmankh[i][j].style.width='9%';
+			krmankh[i][j].style.marginLeft='1%';
+			//if(i==0)krmankh[i].style.marginLeft=(1+10*(8-krmsnkya))+'%';
+			krmankh[i][j].style.height='50%';
+			krmankh[i][j].style.backgroundColor='white';
+			ahrta.ahrnm(krmankh[i][j],'ankah/'+j.toString()+'.svg');
+		}
 	}
+	return krmankh;
 }
+var krmankh=krmankah(krmsnkya);
+for(let i=0;i<krmsnkya;i++)krmdrsnm.appendChild(krmankh[i][0]);
 
 var	bk=new Image();
 bk.style.objectFit='contain';
@@ -125,8 +130,12 @@ bk.style.filter='invert(1)';
 bk.style.backgroundColor='white';
 ahrta.ahrnm(bk,'ankah/bk.svg');
 krmdrsnm.appendChild(bk);
-	
-ptlm.appendChild(krmdrsnm);
+
+var smpadkh=document.createElement('Div');
+smpadkh.style.height='30%';
+smpadkh.style.width='100%';
+
+
 var ankah=document.createElement('Div');
 ankah.style.margin='auto';
 ankah.style.height='30%';
@@ -154,6 +163,9 @@ for(let i=0;i<10;i++)
 	ahrta.ahrnm(ankh[i],'ankah/'+i.toString()+'.svg');
 	ankah.appendChild(ankh[i]);
 }
+ptlm.appendChild(krmdrsnm);
+ptlm.appendChild(ankah);
+
 var tnknm=new Image();
 tnknm.style.imageRendering='crisp-edges';
 tnknm.style.imageRendering='pixelated';
@@ -284,12 +296,11 @@ citrm.style.objectPosition='center';
 citrm.style.backgroundColor='white';
 citrm.style.borderRadius='calc(var(--iw) * 0.02)';
 citrm.style.opacity=0;
-citrm.onclick=()=>{if(citrm.style.opacity==1)anknm(()=>{});}
+citrm.onclick=()=>{anknm((l)=>{vkta.ankitm=l});}
 //ahrta.ahrnm(citrm,'1.jpg');
 //citrm.onload=()=>{ptlm.replaceChild(citrm,ankah)};
 //citrm.src='https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg';
 //ankah.appendChild(citrm);
-ptlm.appendChild(ankah);
 var nodnani=document.createElement('Div');
 const nodnvistarh=1;
 nodnani.style.height=50*nodnvistarh+'%';
@@ -381,14 +392,19 @@ function ktnm()
 	if(ktah[ktakrmankh-1].length>2)eval(ktah[ktakrmankh-1][2]);
 	vkta.krmh=ktah[ktakrmankh-1][0];
 	
+	console.log('src:'+src);
+	if(src!='')
+	{
 	if(arbdh)
 	{
 		citrm.style.opacity=0;
 		citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
-		citrm.onerror=()=>{setTimeout(()=>{if(ktanam==k)citrm.src=ktah[parseInt(ktanam)-1];},2000)};
+		citrm.onerror=()=>{setTimeout(()=>{if(ktanam==k)citrm.src=src;},2000)};
 		citrm.src=src;
 	}
 	else {ahrta.ahrnm(citrm,src);}
+	}
+	else citrm.style.opacity=0;
 	ptlm.replaceChild(citrm,ptlm.children[2]);
 }
 var key=[false,false,false,false,false,false,false,false,false,false];
@@ -462,7 +478,7 @@ function cr()
 	krmdrsnm.style.opacity=1;
 	ankah.style.opacity=1;
 	nodnani.style.opacity=1;
-	citrm.style.opacity=1;
+	if(citrm.src)citrm.style.opacity=1;
 	for(let i=0;i<6;i++)
 		nodnm[i].onpointerdown=(e)=>{
 			if(i==5&&vkta.vdti&&cx==6&&!vkta.anvrtm){tyktvym=true;vrttih();}
@@ -482,6 +498,7 @@ function crkey()
     e.getModifierState("Control") ||
     e.getModifierState("Alt")
     	)return;
+		e.preventDefault();
 		for(let i=0;i<10;i++)
 			if(e.key==i&&key[i]){key[i]=false;ankkrm(i);}
 	}
@@ -495,6 +512,7 @@ function crkey()
     e.getModifierState("Control") ||
     e.getModifierState("Alt")
     )return;
+		e.preventDefault();
     for(let i=0;i<10;i++)
     	if(key[i]&&e.key!=i){key[i]=false;ankkrm(i);}
 		if(e.code=='Backspace'||e.code=='Delete'||e.code=='Escape')bkkrm();
@@ -585,7 +603,7 @@ vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते'
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
 const ktah=[
 	[0,'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg','citrm.style.objectPosition="bottom"'],
-	//[0,'https://xyz','citrm.style.objectPosition="center"'],
+	[0,'','citrm.style.objectPosition="center"'],
 ];
 var arbdh=false;
 hash();
