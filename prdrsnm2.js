@@ -1,4 +1,21 @@
-import('./lv.js').then(m=>lv=m.lv);
+var ahrta=new Object();
+ahrta={snkya:0,
+	krmnm:function()
+	{
+		this.snkya--;
+		if(this.snkya==0)this.prtikrm();
+	},
+	ahrnm:function(stanm,prapyh)
+	{
+		this.snkya++;
+		stanm.onload=()=>{this.krmnm();};
+		stanm.onerror=abort;
+		stanm.src=prapyh;
+	}
+}
+
+ahrta.snkya++;
+import('./lv.js').then((m)=>{lv=m.lv;ahrta.krmnm();}).catch(abort);
 
 function anknm(prtikrm)
 {
@@ -47,21 +64,7 @@ ptlm.style.maxWidth='100%';
 ptlm.style.maxHeight='100%';
 ptlm.style.backgroundColor='black';'rgb(50,50,50)';
 ptlm.style.textAlign='center';
-var ahrta=new Object();
-ahrta={snkya:0,
-	krmnm:function()
-	{
-		this.snkya--;
-		if(this.snkya==0)this.prtikrm();
-	},
-	ahrnm:function(stanm,prapyh)
-	{
-		this.snkya++;
-		stanm.onload=()=>{this.krmnm();};
-		stanm.onerror=abort;
-		stanm.src=prapyh;
-	}
-}
+
 ahrta.prtikrm=()=>{
 	console.log('ptlm');
 	cr();
