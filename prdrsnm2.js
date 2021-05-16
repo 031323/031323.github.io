@@ -1,5 +1,31 @@
-//import {lv} from './lv.js'
+import('./lv.js').then(m=>lv=m.lv);
 
+function anknm(prtikrm)
+{
+	document.body.appendChild(tnknm);
+	tnknm.svrclk=0;
+	tnknm.vrnah=[];
+	tnknm.svrah=[];
+	tnknm.prtikrm=prtikrm;
+	window.onkeydown=(e)=>
+	{
+		if (e.getModifierState("Fn") ||
+    e.getModifierState("Hyper") ||
+    e.getModifierState("OS") ||
+    e.getModifierState("Super") ||
+    e.getModifierState("Win") /* hack for IE */ ||
+    e.getModifierState("Control") ||
+    e.getModifierState("Alt")
+    )return;
+    if(e.code=='Enter')
+    {
+			document.body.removeChild(tnknm);
+			crkey();
+			tnknm.prtikrm(tnknm.lekh);
+    }
+    else tnknm.lekh+=e.key;
+	}
+}
 function abort()
 {
 	console.log('aborted');
@@ -21,6 +47,7 @@ ptlm.style.maxWidth='100%';
 ptlm.style.maxHeight='100%';
 ptlm.style.backgroundColor='black';'rgb(50,50,50)';
 ptlm.style.textAlign='center';
+var ahrta=new Object();
 ahrta={snkya:0,
 	krmnm:function()
 	{
@@ -66,21 +93,31 @@ krmdrsnm.style.justifyContent='flex-start';
 krmdrsnm.style.alignItems='center';
 krmdrsnm.style.backgroundColor='black';
 krmdrsnm.style.opacity='0';
-var krmankh=[];
-for(let i=0;i<krmsnkya;i++)
+
+function krmankah(snkya)
 {
-	krmankh[i]=new Image();
-	krmankh[i].style.objectFit='contain';
-	krmankh[i].style.borderRadius='calc(var(--iw) * 0.01)';
-	krmankh[i].style.width='9%';
-	krmankh[i].style.marginLeft='1%';
-	//if(i==0)krmankh[i].style.marginLeft=(1+10*(8-krmsnkya))+'%';
-	krmankh[i].style.height='50%';
-	krmankh[i].style.backgroundColor='white';
-	//krmankh[i].style.boxShadow='0 0 5px 5px gray';
-	//krmankh[i].style.filter='invert(1)';
-	krmdrsnm.appendChild(krmankh[i]);
+	krmankh=new Object();
+	for(let i=0;i<snkya;i++)
+	{
+		krmankh[i]=[];
+		for(let j=0;j<10;j++)
+		{
+			krmankh[i][j]=new Image();
+			krmankh[i][j].style.objectFit='contain';
+			krmankh[i][j].style.borderRadius='calc(var(--iw) * 0.01)';
+			krmankh[i][j].style.width='9%';
+			krmankh[i][j].style.marginLeft='1%';
+			//if(i==0)krmankh[i].style.marginLeft=(1+10*(8-krmsnkya))+'%';
+			krmankh[i][j].style.height='50%';
+			krmankh[i][j].style.backgroundColor='white';
+			ahrta.ahrnm(krmankh[i][j],'ankah/'+j.toString()+'.svg');
+		}
+	}
+	return krmankh;
 }
+var krmankh=krmankah(krmsnkya);
+for(let i=0;i<krmsnkya;i++)krmdrsnm.appendChild(krmankh[i][0]);
+
 var	bk=new Image();
 bk.style.objectFit='contain';
 bk.style.margin='auto';
@@ -93,8 +130,12 @@ bk.style.filter='invert(1)';
 bk.style.backgroundColor='white';
 ahrta.ahrnm(bk,'ankah/bk.svg');
 krmdrsnm.appendChild(bk);
-	
-ptlm.appendChild(krmdrsnm);
+
+var smpadkh=document.createElement('Div');
+smpadkh.style.height='30%';
+smpadkh.style.width='100%';
+
+
 var ankah=document.createElement('Div');
 ankah.style.margin='auto';
 ankah.style.height='30%';
@@ -122,6 +163,132 @@ for(let i=0;i<10;i++)
 	ahrta.ahrnm(ankh[i],'ankah/'+i.toString()+'.svg');
 	ankah.appendChild(ankh[i]);
 }
+ptlm.appendChild(krmdrsnm);
+ptlm.appendChild(ankah);
+
+var tnknm=new Image();
+tnknm.style.imageRendering='crisp-edges';
+tnknm.style.imageRendering='pixelated';
+tnknm.style.height='100%';
+tnknm.style.width='100%';
+tnknm.style.position='absolute';
+tnknm.style.objectFit='contain';
+tnknm.style.backgroundColor='black';
+tnknm.onclick=(e)=>
+{
+	let c=tnknm;
+	let R=c.getBoundingClientRect();
+	let cx=0,cy=0,cw=R.width,ch=R.height;
+	let c_w=7,c_h=8;
+	let r=c_w/R.width*R.height/c_h;
+	if(r<1)
+	{
+		cx=R.width*(1-r)/2;
+		cw=R.width*r;
+	}
+	else if(r>1)
+	{
+		cy=R.height*(1-1/r)/2;
+		ch=R.height/r;
+	}
+	let x=Math.floor((e.clientX-R.left-cx)*c_w/cw);
+	let y=Math.floor((e.clientY-R.top-cy)*c_h/ch);
+	if(x==6&&y==7)
+	{
+		document.body.removeChild(tnknm);
+		crkey();
+		tnknm.prtikrm(devnagri());
+	}
+	else if(x>1&&y<5)
+	{
+		tnknm.vrnah.push('कखगघङचछजझञटठडढणतथदधनपफबभम'[y*5+x-2]);
+		tnknm.svrah.push(0);
+		tnknm.svrclk=0;
+	}
+	else if(x>1&&y>4&&x<6&&y<7)
+	{
+		tnknm.vrnah.push('यरलवशषसह'[(y-5)*4+x-2]);
+		tnknm.svrah.push(0);
+		tnknm.svrclk=0;
+	}
+	else if(x==6&&y>4&&y<7)
+	{
+		tnknm.vrnah.push('ंः'[y-5]);
+		tnknm.svrah.push(0);
+		tnknm.svrclk=0;
+	}
+	else if(x<2&&y<7)
+	{
+		if(tnknm.vrnah.length>0&&'अआइईऋॠऌॡउऊएऐओऔ'[y*2+x]!=tnknm.vrnah[tnknm.vrnah.length-1])tnknm.svrclk=0;
+		if(tnknm.svrclk==0)
+		{
+			tnknm.vrnah.push('अआइईऋॠऌॡउऊएऐओऔ'[y*2+x]);
+			tnknm.svrah.push(1);
+			tnknm.svrclk++;
+		}
+		else if(tnknm.svrclk==1){{tnknm.svrah[tnknm.svrah.length-1]=2;tnknm.svrclk++;}}
+		else if(tnknm.svrclk==2){tnknm.svrah[tnknm.svrah.length-1]=3;tnknm.svrclk++;}
+	}
+	else if(x<6&&y==7)
+	{
+		tnknm.svrclk=0;
+	}
+	console.log(devnagri());
+}
+function devnagri()
+{
+	let lekh='';
+	let purvanudattah=0;
+	for(let i=0;i<tnknm.svrah.length;i++)
+	{
+		if(tnknm.svrah[i]==2||tnknm.svrah[i]==3)break;
+		else purvanudattah=i;
+	}
+	//let svraksrah='अआइईऋॠऌॡउऊएऐओऔ';
+	//let svrcihnani=["","ा", "ि", "ी", "ृ", "ॄ", "ॢ", "ॣ", "ु", "ू", "े", "ै", "ो", "ौ"];
+	for(let i=0;i<tnknm.vrnah.length;i++)
+	{
+		if('कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह'.includes(tnknm.vrnah[i]))lekh+=tnknm.vrnah[i]+'्';
+		else if('ंः'.includes(tnknm.vrnah[i]))
+		{
+			let j=lekh.length-1;
+			if(lekh[j]=='॒'||lekh[j]=='॑')
+				lekh=lekh.slice(0,-1)+tnknm.vrnah[i]+lekh.slice(-1);
+			else lekh+=tnknm.vrnah[i];
+		}
+		else if('अआइईऋॠऌॡउऊएऐओऔ'.includes(tnknm.vrnah[i]))
+		{
+			if(lekh[lekh.length-1]=='्')
+			{
+				lekh=lekh.substring(0,lekh.length-1);
+				lekh+=["","ा", "ि", "ी", "ृ", "ॄ", "ॢ", "ॣ", "ु", "ू", "े", "ै", "ो", "ौ"]['अआइईऋॠऌॡउऊएऐओऔ'.indexOf(tnknm.vrnah[i])];
+			}
+			else lekh+=tnknm.vrnah[i];
+			let svrhL=-1,svrhR=-1;
+			for(let j=i-1;j>=0;j--)
+				if(tnknm.svrah[j]!=0){svrhL=tnknm.svrah[j];break;}
+			for(let j=i+1;j<tnknm.svrah.length;j++)
+				if(tnknm.svrah[j]!=0){svrhR=tnknm.svrah[j];break;}
+			if(tnknm.svrah[i]==2){}
+			else if(tnknm.svrah[i]==3)
+			{
+				if(svrhL!=2&&svrhR==2)
+				{
+					if('आईॠॡऊएऐओऔ'.includes(tnknm.vrnah[i]))lekh+='३॒॑';
+					else lekh+='१॒॑';
+				}
+				else lekh+='॑';
+			}
+			else if(tnknm.svrah[i]==1)
+			{
+				if(svrhR==2||svrhR==3||i<=purvanudattah)lekh+='॒';
+				else if(svrhL==2)lekh+='॑';
+			}
+		}
+	}
+	return lekh;
+}
+ahrta.ahrnm(tnknm,'df.png');
 var citrm=new Image();
 citrm.style.height='30%';
 citrm.style.width='100%';
@@ -130,11 +297,11 @@ citrm.style.objectPosition='center';
 citrm.style.backgroundColor='white';
 citrm.style.borderRadius='calc(var(--iw) * 0.02)';
 citrm.style.opacity=0;
+citrm.onclick=()=>{anknm((l)=>{vkta.ankitm=l});}
 //ahrta.ahrnm(citrm,'1.jpg');
 //citrm.onload=()=>{ptlm.replaceChild(citrm,ankah)};
 //citrm.src='https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg';
 //ankah.appendChild(citrm);
-ptlm.appendChild(ankah);
 var nodnani=document.createElement('Div');
 const nodnvistarh=1;
 nodnani.style.height=50*nodnvistarh+'%';
@@ -222,24 +389,23 @@ function ktnm()
 	}
 	let k=ktanam;
 	if(ktah[ktakrmankh-1]==0)return;
-	let src='';
-	if(typeof(ktah[ktakrmankh-1])=='string')src=ktah[ktakrmankh-1];
-	else
-	{
-		src=ktah[ktakrmankh-1][0];
-		eval(ktah[ktakrmankh-1][1]);
-	}
+	let src=ktah[ktakrmankh-1][1];
+	if(ktah[ktakrmankh-1].length>2)eval(ktah[ktakrmankh-1][2]);
+	vkta.krmh=ktah[ktakrmankh-1][0];
 	
+	console.log('src:'+src);
+	if(src!='')
+	{
 	if(arbdh)
 	{
 		citrm.style.opacity=0;
 		citrm.onload=()=>{if(ktanam==k)citrm.style.opacity=1};
-		citrm.onerror=()=>{setTimeout(()=>{if(ktanam==k)citrm.src=ktah[parseInt(ktanam)-1];},2000)};
+		citrm.onerror=()=>{setTimeout(()=>{if(ktanam==k)citrm.src=src;},2000)};
 		citrm.src=src;
 	}
 	else {ahrta.ahrnm(citrm,src);}
-	//if(citrm.src.includes('EiGBmms-alk'))citrm.style.objectPosition='bottom';
-	//else citrm.style.objectPosition='center';
+	}
+	else citrm.style.opacity=0;
 	ptlm.replaceChild(citrm,ptlm.children[2]);
 }
 var key=[false,false,false,false,false,false,false,false,false,false];
@@ -259,21 +425,10 @@ function cynm()
 	for(let i=0;i<krmsnkya;i++)
 	{
 		if(i<ktanam.length){
-			if(krmankh[i].src[krmankh[i].src.length-5]!=ktanam[i])
-			{
-				console.log(i);
-				if(arbdh)
-				{
-					krmankh[i].style.opacity=0;
-					krmankh[i].onload=()=>{if(krmankh[i].src[krmankh[i].src.length-5]==ktanam[i])krmankh[i].style.opacity=1;}
-					krmankh[i].onerror=abort;
-					krmankh[i].src='ankah/'+ktanam[i]+'.svg';
-				}
-				else ahrta.ahrnm(krmankh[i],'ankah/'+ktanam[i]+'.svg');
-			}
-			else krmankh[i].style.opacity=1;
+			krmdrsnm.replaceChild(krmankh[i][ktanam[i]],krmdrsnm.children[i]);
+			krmdrsnm.children[i].style.opacity=1;
 		}
-		else krmankh[i].style.opacity=0;
+		else krmdrsnm.children[i].style.opacity=0;
 	}
 	ptlm.replaceChild(ankah,ptlm.children[2]);
 	if(ktanam.length==krmsnkya)ktnm();
@@ -300,18 +455,19 @@ function nivrttih()
 		}
 	}
 }
+function krm(){if(cx){nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
+function bkkrm(){
+	ktanam=ktanam.substring(0,ktanam.length-1);cynm();
+}
+function ankdown(i){ankh[i].style.filter='invert(1)';}
+function ankout(i){ankh[i].style.filter='';}
+function ankkrm(i){ankout(i);if(ankh[i].style.opacity==='1'){ktanam+=i;cynm();}}
 function cr()
 {
 	window.onhashchange=hash;
 	arbdh=true;
-	if(nvhash)hash();
-	function bkkrm(){
-		ktanam=ktanam.substring(0,ktanam.length-1);cynm();
-	}
+	if(nvhash){hash();nvhash=false;}
 	bk.onpointerdown=bkkrm;
-	function ankdown(i){ankh[i].style.filter='invert(1)';}
-	function ankout(i){ankh[i].style.filter='';}
-	function ankkrm(i){ankout(i);if(ankh[i].style.opacity==='1'){ktanam+=i;cynm();}}
 	for(let i=0;i<10;i++)
 	{
 		//ankh[i].onpointerdown=()=>{ankkrm(i);};
@@ -323,14 +479,17 @@ function cr()
 	krmdrsnm.style.opacity=1;
 	ankah.style.opacity=1;
 	nodnani.style.opacity=1;
-	citrm.style.opacity=1;
-	function krm(){if(cx){nodnm[cx-1].style.filter='invert(1)';vkta.krm(cx);}}
+	if(citrm.src)citrm.style.opacity=1;
 	for(let i=0;i<6;i++)
 		nodnm[i].onpointerdown=(e)=>{
 			if(i==5&&vkta.vdti&&cx==6&&!vkta.anvrtm){tyktvym=true;vrttih();}
 			if(vkta.vdti)return;cx=i+1;krm();
 		};
-	document.body.onkeyup=(e)=>
+	crkey();
+}
+function crkey()
+{
+	window.onkeyup=(e)=>
 	{
 		if (e.getModifierState("Fn") ||
     e.getModifierState("Hyper") ||
@@ -340,10 +499,11 @@ function cr()
     e.getModifierState("Control") ||
     e.getModifierState("Alt")
     	)return;
+		e.preventDefault();
 		for(let i=0;i<10;i++)
 			if(e.key==i&&key[i]){key[i]=false;ankkrm(i);}
 	}
-	document.body.onkeydown=(e)=>{
+	window.onkeydown=(e)=>{
 		console.log(e.key+' '+e.code);
 		if (e.getModifierState("Fn") ||
     e.getModifierState("Hyper") ||
@@ -353,6 +513,7 @@ function cr()
     e.getModifierState("Control") ||
     e.getModifierState("Alt")
     )return;
+		e.preventDefault();
     for(let i=0;i<10;i++)
     	if(key[i]&&e.key!=i){key[i]=false;ankkrm(i);}
 		if(e.code=='Backspace'||e.code=='Delete'||e.code=='Escape')bkkrm();
@@ -442,12 +603,8 @@ vkta.krm=function(x)
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
 const ktah=[
-	['https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg','citrm.style.objectPosition="bottom"'],
-	//'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Tiger_in_the_water.jpg/330px-Tiger_in_the_water.jpg',
-	//'https://source.unsplash.com/2pSK9oOgCmQ/500x200',
-	//'https://www.publicdomainpictures.net/pictures/390000/nahled/tiger-malerei-kunst-alt.jpg',
-	//['https://images.assettype.com/freepressjournal%2F2020-04%2Ff5dc88ed-ad80-4ba9-bdd1-507c78ad5dec%2F_27DEC19BLSONI_SULTAN_01.jpg?rect=0%2C38%2C1540%2C866&w=500','citrm.style.filter="brightness(2)"'],
-	//['https://thumbs-prod.si-cdn.com/WAFsoVKzLtcUGiK-GuDTMExXtuQ=/fit-in/1600x0/https://public-media.si-cdn.com/filer/20130731112159tiger-470x251.jpg','citrm.style.filter=""']
+	[0,'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg','citrm.style.objectPosition="bottom"'],
+	//[0,'','citrm.style.objectPosition="center"'],
 ];
 var arbdh=false;
 hash();
