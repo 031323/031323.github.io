@@ -609,6 +609,7 @@ const ktah=[
 	[0,'https://i.pinimg.com/originals/db/28/8a/db288ada74b24d2d18d904975b99afc2.jpg','citrm.style.objectPosition="bottom"'],
 	//[0,'','citrm.style.objectPosition="center"'],
 ];
+
 var arbdh=false;
 hash();
 var nvhash=false;
