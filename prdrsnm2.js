@@ -173,6 +173,7 @@ tnknm.style.height='100%';
 tnknm.style.width='100%';
 tnknm.style.position='absolute';
 tnknm.style.objectFit='contain';
+tnknm.style.backgroundColor='black';
 tnknm.onclick=(e)=>
 {
 	let c=tnknm;
