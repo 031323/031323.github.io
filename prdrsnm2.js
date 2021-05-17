@@ -300,7 +300,7 @@ citrm.style.objectPosition='center';
 citrm.style.backgroundColor='white';
 citrm.style.borderRadius='calc(var(--iw) * 0.02)';
 citrm.style.opacity=0;
-citrm.onclick=()=>{anknm((l)=>{vkta.ankitm=l});}
+//citrm.onclick=()=>{anknm((l)=>{vkta.ankitm=l});}
 //ahrta.ahrnm(citrm,'1.jpg');
 //citrm.onload=()=>{ptlm.replaceChild(citrm,ankah)};
 //citrm.src='https://physicsworld.com/wp-content/uploads/2020/11/snake-pitviper-843686628-iStock_TommyIX.jpg';
@@ -602,6 +602,14 @@ vkta.krm=function(x)
 		bagkrmh++;
 	}
 	vacnm();
+}
+citrm.onclick=()=>{//+ anknm
+};
+vkta.anknm=function()
+{
+anknm((l)=>{vkta.ankitm=l});
+// + nvlekh , anvesnm 
+//ydi cx siddh asit + lekprivrtnm button, alt-lekprivrtnm
 }
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्','शम्'];
