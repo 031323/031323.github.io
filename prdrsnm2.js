@@ -452,7 +452,7 @@ function vktapriskarh()
 	smpadnsjja();
 	vkta.anvesnani=[];
 	vkta.purvkalh=-Infinity;
-	vkta.purvkrmh=-1;
+	vkta.purvkrmh=0;
 	vkta.nodnani=[];
 	vkta.prsnkrmh=[];
 }
@@ -833,16 +833,15 @@ upvakyprivrtnm.onpointerup=()=>{
 }
 
 nirakrnm.onpointerup=()=>{
-	nirakrnm.style.filter='';
-	if(vkta.suvdti||vkta.vdti)return;
-	if(vkta.krmh==vkta.purvkrmh)return;
+	if(vkta.suvdti||vkta.vdti){nirakrnm.style.filter='';return;}
+	if(vkta.krmh==vkta.purvkrmh){nirakrnm.style.filter='';return;}
 	let c=vkta.vak[vkta.purvkrmh].split(' ');
 	c[vkta.nodnani[vkta.nodnani.length-1]]='0';
 	vkta.vak[vkta.purvkrmh]=c.join(' ');
 	vkta.krmh=vkta.purvkrmh;
 	cx=0;
 	vkta.vdti=true;
-	suvacnarmbh('नैवम्',()=>{},()=>{vkta.vdti=false;nirakrnm.style.filter='';});
+	suvacnarmbh('नैवम्',()=>{},()=>{vkta.vdti=false;nirakrnm.style.filter='';smpadnsjja();});
 }
 
 smrtvymJ.onpointerup=()=>{
@@ -890,12 +889,14 @@ cynmM.onpointerup=()=>{
 		vkta.cynstanm=vkta.purvkrmh;
 		vkta.cynkrmh=0;
 		vkta.cynnodnm=vkta.nodnani[vkta.nodnani.length-1];
+		anvesi.postMessage([vkta.vak[vkta.anvesnani[0]].split(' ')[0],vkta.vak]);
 	}
 	let p=new Promise((resolve,reject)=>resolve());
 	vkta.vdti=true;
 	if(vkta.cynkrmh+1>=vkta.anvesnani.length)
 	{
 		vkta.vdti=true;
+		if(vkta.cynkrmh!=0)anvesi.postMessage('M');
 		p=new Promise((resolve,reject)=>{
 			anvesi.onmessage=(e)=>{
 				if(typeof(e.data)!='undefined'){vkta.anvesnani.push(e.data);resolve();}
@@ -905,6 +906,7 @@ cynmM.onpointerup=()=>{
 	}
 	p.then(()=>{
 		vkta.cynkrmh+=1;
+		console.log('cynkrmh '+vkta.cynkrmh);
 		if(vkta.cynkrmh==1)
 		{
 			vkta.vikrtvym=vkta.vak[vkta.anvesnani[0]];
@@ -916,7 +918,7 @@ cynmM.onpointerup=()=>{
 				},true)
 			){vkta.vak.pop();}
 		}
-		vakcynm(vkta.anvesnani[vkta.cynkrmh]).then(()=>{cynmM.style.filter='';});
+		vakcynm(vkta.cynkrmh).then(()=>{cynmM.style.filter='';});
 	}).catch(()=>{});
 }
 cynmN.onpointerup=()=>{
@@ -925,31 +927,33 @@ cynmN.onpointerup=()=>{
 	{
 		vkta.cynkrmh-=1;
 		vkta.vdti=true;
-		vakcynm(vkta.anvesnani[vkta.cynkrmh]).then(()=>{cynmN.style.filter='';});
+		vakcynm(vkta.cynkrmh).then(()=>{cynmN.style.filter='';});
 	}
+	else cynmN.style.filter='';
 }
 function vakcynm(krmh)
 {
+	console.log('NM '+krmh);
 	return new Promise((resolve,reject)=>{
 		let c=vkta.vak[vkta.cynstanm].split(' ');
+		if(krmh==0&&vkta.vak[vkta.anvesnani[krmh]]!=vkta.vikrtvym)
+		{
+			vkta.vak.push(vkta.vikrtvym);
+			vkta.anvesnani[krmh]=vkta.vak.length-1;
+		}
 		if(c[vkta.cynnodnm]==vkta.krmh)
 		{
-			if(krmh==0&&vkta.vak[vkta.anvesnani[krmh]]!=vkta.vikrtvym)
-			{
-				vkta.vak.push(vkta.vikrtvym);
-				vkta.anvesnani[krmh]=vkta.vak.length-1;
-			}
 			c[vkta.cynnodnm]=vkta.anvesnani[krmh];
 			vkta.vak[vkta.cynstanm]=c.join(' ');
 		}
-		vkta.krmh=krmh;
-		suvacnarmbh(vkta.vak[krmh].split(' ')[0].split('/')[0],()=>{},()=>{vkta.vdti=false;resolve();});
+		vkta.krmh=vkta.anvesnani[krmh];
+		suvacnarmbh(vkta.vak[vkta.krmh].split(' ')[0].split('/')[0],()=>{},()=>{vkta.vdti=false;resolve();});
 	});
 }
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्',''];//शम्
 const ktah=[
-	['vak/1.vak','krnh.png','citrm.style.imageRendering="crisp-edges";citrm.style.imageRendering="pixelated";'],
+	['vak/1.vak','','citrm.style.imageRendering="crisp-edges";citrm.style.imageRendering="pixelated";'],
 	//[0,'',''],
 ];
 
