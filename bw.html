@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+<input type="range" min="1" max="100" value="50" class="slider" id="vs" onchange="g()">
+<p>
+<input type="file" id="fr" name="filename">
+</p>
+<canvas id="dc" width=256 height=256 style="width:100%"></canvas>
+<script>
+var data;
+var img;
+var ctxt;
+function handleFileSelect(evt) {
+	var files = evt.target.files
+	for (var i = 0, f; f = files[i]; i++) {
+		var reader = new FileReader()
+		reader.onload = (function(theFile) {
+			return function(e) {
+			getInfo(e.target.result)
+					}
+		})(f)
+		reader.readAsDataURL(f)
+	}
+}
+function getInfo(pic) {
+	ctxt = dc.getContext('2d');
+	img = new Image;
+	img.src = pic;
+	img.onload = function() {
+		dc.width=img.width;
+		dc.height=img.height;
+		ctxt.drawImage(img, 0, 0);
+		data = ctxt.getImageData(0, 0, img.width, img.height).data;
+		g();
+	}
+}
+function g()
+{
+	if(!data)return;
+	ctxt.clearRect(0,0,dc.width,dc.height);
+	for(i=0;i<dc.width;i++)
+	{
+		for(j=0;j<dc.height;j++)
+		{
+			if(data[j*dc.width*4+i*4]+data[j*dc.width*4+i*4+1]+data[j*dc.width*4+i*4+2]<vs.value*3*2.56)
+				ctxt.fillRect(i,j,1,1);
+		}
+	}
+}
+document.getElementById('fr').addEventListener('change',handleFileSelect,false)
+</script>
+</body>
+</html>

@@ -947,13 +947,14 @@ function vakcynm(krmh)
 			vkta.vak[vkta.cynstanm]=c.join(' ');
 		}
 		vkta.krmh=vkta.anvesnani[krmh];
+		smpadnsjja();
 		suvacnarmbh(vkta.vak[vkta.krmh].split(' ')[0].split('/')[0],()=>{},()=>{vkta.vdti=false;resolve();});
 	});
 }
 vkta.prsnah=[null,'किम॒न्यत्','किमु॑च्यते','किम॒स्मिन्','किम्प्रागु॒क्तम्','किम्',null];
 vkta.uttrah=[null,'ए॒तदे॒व','ए॒तदे॒व','कस्मि॑न्','नकिमपि॑','किम्',''];//शम्
 const ktah=[
-	['vak/1.vak','','citrm.style.imageRendering="crisp-edges";citrm.style.imageRendering="pixelated";'],
+	['vak/1.vak','krnh.png','citrm.style.imageRendering="crisp-edges";citrm.style.imageRendering="pixelated";'],
 	//[0,'',''],
 ];
 

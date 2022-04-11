@@ -4,17 +4,19 @@ var smta,krmh,snkya,upsnkya;
 function anvesnm()
 {
 	for(let i=1;i<snkya-upsnkya;i++)
-		if(smta[i-1]>=smta[i])
+		if(smta[i-1]<=smta[i])
 		{
 			let tmp=smta[i];smta[i]=smta[i-1];smta[i-1]=tmp;
 					tmp=krmh[i];krmh[i]=krmh[i-1];krmh[i-1]=tmp;
 		}
 	upsnkya++;
+	console.log(smta,krmh);
+	console.log(krmh[snkya-upsnkya]);
 	return(krmh[snkya-upsnkya]);
 }
 onmessage=function(e)
 {
-	console.log('anvesnm');
+	console.log('anvesnm',e.data);
 	if(e.data!='M')
 	{
 		smta=new Int32Array(e.data[1].length);
