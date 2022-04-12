@@ -5,7 +5,7 @@
 <p>
 <input type="file" id="fr" name="filename">
 </p>
-<canvas id="dc" width=256 height=256 style="width:100%"></canvas>
+<canvas id="dc" width=256 height=256 style=""></canvas>
 <script>
 var data;
 var img;
@@ -26,11 +26,10 @@ function getInfo(pic) {
 	ctxt = dc.getContext('2d');
 	img = new Image;
 	img.src = pic;
+	img.style.width=dc.width;
 	img.onload = function() {
-		dc.width=img.width;
-		dc.height=img.height;
-		ctxt.drawImage(img, 0, 0);
-		data = ctxt.getImageData(0, 0, img.width, img.height).data;
+		ctxt.drawImage(img, 0, 0,dc.width,dc.width*img.height/img.width);
+		data = ctxt.getImageData(0, 0, dc.width, dc.height).data;
 		g();
 	}
 }
